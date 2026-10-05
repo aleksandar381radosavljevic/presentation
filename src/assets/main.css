@@ -1,0 +1,70 @@
+@import './base.css';
+
+#app main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  button,
+  a:hover {
+    box-shadow: 0 20px 80px -10px var(--primary);
+  }
+}
+
+@media (min-width: 1024px) {
+}
+
+.primary-button {
+  /* Black border */
+  background-color: var(--primary);
+  color: var(--text);
+  /* Black text color */
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  margin-top: 1rem;
+}
+
+.primary-button:hover {
+  color: #fff;
+  box-shadow: 0 20px 80px -10px var(--primary);
+}
+
+.secondary-button {
+  /* Black border */
+  background-color: var(--secondary);
+  color: var(--text);
+  /* Black text color */
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  margin-top: 1rem;
+}
+
+.secondary-button:hover {
+  color: #fff;
+  box-shadow: 0 20px 80px -10px var(--primary);
+}
+
+.hidden {
+  display: none;
+}
