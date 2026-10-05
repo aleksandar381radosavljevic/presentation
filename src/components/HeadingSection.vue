@@ -1,11 +1,11 @@
 <template>
   <JumbotronBar :image-url="BackgroundUrl">
-    <HighlightedText outline>Здраво, ја сам</HighlightedText>
-    <ColorEffectText>Александар Радосављевић</ColorEffectText>
-    <HighlightedText>Софтверски инжењер & Вођа тима за фронтенд</HighlightedText>
+    <HighlightedText outline>{{ t('heading.greeting') }}</HighlightedText>
+    <ColorEffectText>{{ t('heading.name') }}</ColorEffectText>
+    <HighlightedText>{{ t('heading.role') }}</HighlightedText>
     <ButtonGroup>
-      <a class="primary-button" href="#">Закажи састанак</a>
-      <a class="secondary-button" href="#">Погледај мој рад</a>
+      <a class="primary-button" href="#">{{ t('heading.scheduleMeeting') }}</a>
+      <a class="secondary-button" href="#">{{ t('heading.seeMyWork') }}</a>
     </ButtonGroup>
   </JumbotronBar>
 </template>
@@ -16,4 +16,7 @@ import ColorEffectText from '../common/ColorEffectText.vue'
 import HighlightedText from '../common/HighlightedText.vue'
 import ButtonGroup from '../common/ButtonGroup.vue'
 import BackgroundUrl from '../assets/images/cover.jpg'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>

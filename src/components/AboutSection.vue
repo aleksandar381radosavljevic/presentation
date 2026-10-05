@@ -1,48 +1,30 @@
 <script setup lang="ts">
 import ColorEffectText from '@/common/ColorEffectText.vue'
 import HighlightedText from '@/common/HighlightedText.vue'
-import FlexDiv from "@/common/FlexDiv.vue";
+import FlexDiv from '@/common/FlexDiv.vue'
+import { useI18n } from 'vue-i18n'
+import en from '@/i18n/locales/en'
+
+const { t } = useI18n()
+const ABOUT_ITEM_COUNT = en.about.items.length
 </script>
 
 <template>
-  <ColorEffectText style="text-align: center; margin: 5rem;">About me</ColorEffectText>
+  <ColorEffectText style="text-align: center; margin: 5rem">{{ t('about.title') }}</ColorEffectText>
   <div class="about">
-    <FlexDiv style="border-bottom: 1px solid var(--secondary); padding: 2rem;">
+    <FlexDiv
+      v-for="i in ABOUT_ITEM_COUNT"
+      :key="i"
+      :style="{
+        padding: '2rem',
+        borderBottom: i < ABOUT_ITEM_COUNT ? '1px solid var(--secondary)' : undefined
+      }"
+    >
       <div style="width: 50%; display: block">
-        <HighlightedText>
-          Experienced engineers focused on quality
-        </HighlightedText>
+        <HighlightedText>{{ t(`about.items.${i - 1}.title`) }}</HighlightedText>
       </div>
       <div style="width: 50%; display: block">
-        <p>
-          Software engineer with experience in working with coorporate software, involved in whole
-          development process. Last 5 years working in Comping Computer Engineering's office in Niš,
-          Serbia
-        </p>
-      </div>
-    </FlexDiv>
-    <FlexDiv style="border-bottom: 1px solid var(--secondary); padding: 2rem;">
-      <div style="width: 50%; display: block">
-        <HighlightedText>Innovative tech mind</HighlightedText>
-      </div>
-      <div style="width: 50%; display: block">
-        <p>
-          Software engineer with experience in working with coorporate software, involved in whole
-          development process. Last 5 years working in Comping Computer Engineering's office in Niš,
-          Serbia
-        </p>
-      </div>
-    </FlexDiv>
-    <FlexDiv style="padding: 2rem;">
-      <div style="width: 50%; display: block">
-        <HighlightedText>Willing to step up</HighlightedText>
-      </div>
-      <div style="width: 50%; display: block">
-        <p>
-          Software engineer with experience in working with coorporate software, involved in whole
-          development process. Last 5 years working in Comping Computer Engineering's office in Niš,
-          Serbia
-        </p>
+        <p>{{ t(`about.items.${i - 1}.text`) }}</p>
       </div>
     </FlexDiv>
   </div>

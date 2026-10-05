@@ -1,32 +1,23 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import HamburgerIcon from '../common/HamburgerIcon.vue'
 import DropdownMenu from '../common/DropdownMenu.vue'
 import logoUrl from '../assets/images/favicon.png'
-import {
-  supportedLanguages,
-  changeLanguage,
-  getSelectedLanguage
-} from '../utils/localization'
+import { supportedLocales, currentLocale, setLocale } from '../i18n'
 
-const languageOptions = supportedLanguages.map((x) => ({ key: x.code, label: x.label }))
-const currentLanguage = getSelectedLanguage()
+const { t } = useI18n()
+
+const languageOptions = supportedLocales.map((x) => ({ key: x.code, label: x.label }))
 const selectedLanguage = computed({
-  get: () => ({ key: currentLanguage.value.code, label: currentLanguage.value.label }),
-  set: (option) => changeLanguage(option.key)
+  get: () => languageOptions.find((x) => x.key === currentLocale.value) ?? languageOptions[0],
+  set: (option) => setLocale(option.key)
 })
 const isExpanded = ref(false)
 
 const toggleMenu = () => (isExpanded.value = !isExpanded.value)
 
-const menuItems = ref([
-  { label: 'About', path: '#about' },
-  { label: 'Experience', path: '#experience' },
-  { label: 'Education', path: '#education' },
-  { label: 'Certifications', path: '#certifications' },
-  { label: 'Skills', path: '#skills' },
-  { label: 'Projects', path: '#projects' }
-])
+const menuItems = ['about', 'experience', 'education', 'certifications', 'skills', 'projects']
 </script>
 
 <template>
@@ -36,7 +27,7 @@ const menuItems = ref([
     <HamburgerIcon @click="toggleMenu" :class="{ hidden: isExpanded }" />
     <div class="close-items" :class="{ hidden: !isExpanded }" @click="toggleMenu()">x</div>
     <div class="menu-items" :class="{ hidden: !isExpanded }">
-      <a :key="item.path" v-for="item in menuItems" :href="item.path">{{ item.label }}</a>
+      <a :key="item" v-for="item in menuItems" :href="`#${item}`">{{ t(`nav.${item}`) }}</a>
     </div>
   </div>
 </template>
