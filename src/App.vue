@@ -1,25 +1,22 @@
 <script setup lang="ts">
-import NavBar from './partials/NavBar.vue'
-import FooterBar from './partials/FooterBar.vue'
-import HeadingSection from './components/HeadingSection.vue'
-import AboutSection from './components/AboutSection.vue'
-import HowSection from '@/components/HowSection.vue'
-import WhySection from '@/components/WhySection.vue'
-import TechnologiesSection from '@/components/TechnologiesSection.vue'
+import { MainContainer } from '@/shared/ui'
+import SiteHeader from './sections/SiteHeader.vue'
+import HeroSection from './sections/HeroSection.vue'
+import AboutSection from './sections/AboutSection.vue'
+import ProcessSection from './sections/ProcessSection.vue'
+import WhySection from './sections/WhySection.vue'
+import ExpertiseSection from './sections/ExpertiseSection.vue'
+import SiteFooter from './sections/SiteFooter.vue'
 </script>
 
 <template>
-  <NavBar></NavBar>
-  <HeadingSection></HeadingSection>
-
-  <main>
-    <AboutSection></AboutSection>
-    <HowSection></HowSection>
-    <WhySection></WhySection>
-    <TechnologiesSection></TechnologiesSection>
-  </main>
-
-  <FooterBar></FooterBar>
+  <SiteHeader />
+  <MainContainer :gap="{ base: 12, lg: 16 }">
+    <HeroSection />
+    <AboutSection />
+    <ProcessSection />
+    <WhySection />
+    <ExpertiseSection />
+  </MainContainer>
+  <SiteFooter />
 </template>
-
-<style scoped></style>

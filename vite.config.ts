@@ -6,16 +6,20 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue({
-      template: {
-        compilerOptions: {
-          isCustomElement: (tag) => ['md-linedivider'].includes(tag)
-        }
+  plugins: [vue(), VueDevTools()],
+  css: {
+    modules: {
+      // Readable class names in DevTools, as in Osnova: os-Button__primary.
+      generateScopedName: (name, filename) => {
+        const component = filename
+          .split('?')[0]
+          .split('/')
+          .at(-1)!
+          .replace(/\.(vue|module\.css)$/, '')
+        return `os-${component}__${name}`
       }
-    }),
-    VueDevTools()
-  ],
+    }
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
