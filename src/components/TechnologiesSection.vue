@@ -14,23 +14,30 @@ import oracleUrl from '@/assets/icons/oracle.png'
 import rabbitUrl from '@/assets/icons/rabbit.png'
 import sqlServerUrl from '@/assets/icons/sqlserver.png'
 import windowsUrl from '@/assets/icons/windows.png'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <template>
-  <ColorEffectText style="text-align: center; margin: 5rem">Expertise domains</ColorEffectText>
+  <ColorEffectText style="text-align: center; margin: 5rem">{{
+    t('technologies.expertiseTitle')
+  }}</ColorEffectText>
   <FlexDiv>
-    <button class="primary-button tile">Application development</button>
-    <button class="primary-button tile">UI/UX</button>
-    <button class="primary-button tile">Mobile</button>
-    <button class="primary-button tile">QA</button>
+    <button class="primary-button tile">{{ t('technologies.domains.appDevelopment') }}</button>
+    <button class="primary-button tile">{{ t('technologies.domains.uiUx') }}</button>
+    <button class="primary-button tile">{{ t('technologies.domains.mobile') }}</button>
+    <button class="primary-button tile">{{ t('technologies.domains.qa') }}</button>
   </FlexDiv>
   <FlexDiv>
-    <button class="secondary-button tile">Agile/Scrum</button>
-    <button class="secondary-button tile">DevOps</button>
-    <button class="secondary-button tile">Consulting</button>
-    <button class="secondary-button tile">Business analysis</button>
+    <button class="secondary-button tile">{{ t('technologies.domains.agile') }}</button>
+    <button class="secondary-button tile">{{ t('technologies.domains.devops') }}</button>
+    <button class="secondary-button tile">{{ t('technologies.domains.consulting') }}</button>
+    <button class="secondary-button tile">{{ t('technologies.domains.businessAnalysis') }}</button>
   </FlexDiv>
-  <ColorEffectText style="text-align: center; margin: 5rem">Technology stack</ColorEffectText>
+  <ColorEffectText style="text-align: center; margin: 5rem">{{
+    t('technologies.stackTitle')
+  }}</ColorEffectText>
   <FlexDiv>
     <CartDiv><img :src="netUrl" alt="logo" width="100px" /></CartDiv>
     <CartDiv><img :src="reactUrl" alt="logo" width="100px" /></CartDiv>

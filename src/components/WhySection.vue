@@ -6,25 +6,28 @@ import CartDiv from '@/common/CartDiv.vue'
 import ClockSvg from '@/common/ClockSvg.vue'
 import RectSvg from '@/common/RectSvg.vue'
 import ApproveSvg from '@/common/ApproveSvg.vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <template>
-  <ColorEffectText style="text-align: center; margin: 5rem">Why to hire me?</ColorEffectText>
+  <ColorEffectText style="text-align: center; margin: 5rem">{{ t('why.title') }}</ColorEffectText>
   <FlexDiv style="padding: 2rem">
     <CartDiv>
       <ApproveSvg />
-      <HighlightedText>Quality</HighlightedText>
-      <p>Delivered software must be proof of quality</p>
+      <HighlightedText>{{ t('why.quality.title') }}</HighlightedText>
+      <p>{{ t('why.quality.text') }}</p>
     </CartDiv>
     <CartDiv>
       <ClockSvg />
-      <HighlightedText>Efficiency</HighlightedText>
-      <p>Delivered software must be proof of quality</p>
+      <HighlightedText>{{ t('why.efficiency.title') }}</HighlightedText>
+      <p>{{ t('why.efficiency.text') }}</p>
     </CartDiv>
     <CartDiv>
       <RectSvg />
-      <HighlightedText>Maintainability</HighlightedText>
-      <p>Delivered software must be proof of quality</p>
+      <HighlightedText>{{ t('why.maintainability.title') }}</HighlightedText>
+      <p>{{ t('why.maintainability.text') }}</p>
     </CartDiv>
   </FlexDiv>
 </template>

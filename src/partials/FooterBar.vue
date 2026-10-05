@@ -1,8 +1,14 @@
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+</script>
+
 <template>
   <footer class="footer">
-    <h1>Interested in collaboration?</h1>
-    <a>Contact me</a>
-    <p>&copy; 2023 Александар Радосављевић</p>
+    <h1>{{ t('footer.title') }}</h1>
+    <a>{{ t('footer.contact') }}</a>
+    <p>{{ t('footer.copyright') }}</p>
   </footer>
 </template>
 
