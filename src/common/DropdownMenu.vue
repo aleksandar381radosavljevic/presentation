@@ -1,19 +1,22 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+
+type Option = { key: string; label: string }
+
 const props = defineProps<{
-  options: { key: string; label: string }[]
-  modelValue: { key: string; label: string }
+  options: Option[]
+  modelValue: Option
 }>()
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: { key: string; label: string } || undefined): void
+  'update:modelValue': [value: Option]
 }>()
 
 const isVisible = ref(false)
 const toggleVisible = () => (isVisible.value = !isVisible.value)
 const onChange = (key: string) => {
   const selectedOption = props.options.find((option) => option.key === key)
-  emit('update:modelValue', selectedOption)
+  if (selectedOption) emit('update:modelValue', selectedOption)
   toggleVisible()
 }
 </script>

@@ -1,20 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import HamburgerIcon from '../common/HamburgerIcon.vue'
+import DropdownMenu from '../common/DropdownMenu.vue'
 import logoUrl from '../assets/images/favicon.png'
 import {
   supportedLanguages,
   changeLanguage,
   getSelectedLanguage
-} from '../utils/localization/index.ts'
+} from '../utils/localization'
 
-const selectedLanguage = ref<{ key: string; label: string }>()
+const languageOptions = supportedLanguages.map((x) => ({ key: x.code, label: x.label }))
+const currentLanguage = getSelectedLanguage()
+const selectedLanguage = computed({
+  get: () => ({ key: currentLanguage.value.code, label: currentLanguage.value.label }),
+  set: (option) => changeLanguage(option.key)
+})
 const isExpanded = ref(false)
-const languageDropDownVisible = ref(false)
 
 const toggleMenu = () => (isExpanded.value = !isExpanded.value)
-const toggleLanguageDropDownVisible = () =>
-  (languageDropDownVisible.value = !languageDropDownVisible.value)
 
 const menuItems = ref([
   { label: 'About', path: '#about' },
@@ -29,10 +32,7 @@ const menuItems = ref([
 <template>
   <div class="navbar">
     <a class="logo-img" href="#"><img :src="logoUrl" alt="logo" /></a>
-    <dropdown-menu
-      :options="supportedLanguages.map((x) => ({ key: x.code, label: x.label }))"
-      v-model="selectedLanguage"
-    ></dropdown-menu>
+    <DropdownMenu :options="languageOptions" v-model="selectedLanguage" />
     <HamburgerIcon @click="toggleMenu" :class="{ hidden: isExpanded }" />
     <div class="close-items" :class="{ hidden: !isExpanded }" @click="toggleMenu()">x</div>
     <div class="menu-items" :class="{ hidden: !isExpanded }">
