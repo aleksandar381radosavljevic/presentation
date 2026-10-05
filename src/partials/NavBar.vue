@@ -3,11 +3,7 @@ import { computed, ref } from 'vue'
 import HamburgerIcon from '../common/HamburgerIcon.vue'
 import DropdownMenu from '../common/DropdownMenu.vue'
 import logoUrl from '../assets/images/favicon.png'
-import {
-  supportedLanguages,
-  changeLanguage,
-  getSelectedLanguage
-} from '../utils/localization'
+import { supportedLanguages, changeLanguage, getSelectedLanguage } from '../utils/localization'
 
 const languageOptions = supportedLanguages.map((x) => ({ key: x.code, label: x.label }))
 const currentLanguage = getSelectedLanguage()

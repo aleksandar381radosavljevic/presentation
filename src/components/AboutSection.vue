@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import ColorEffectText from '@/common/ColorEffectText.vue'
 import HighlightedText from '@/common/HighlightedText.vue'
-import FlexDiv from "@/common/FlexDiv.vue";
+import FlexDiv from '@/common/FlexDiv.vue'
 </script>
 
 <template>
-  <ColorEffectText style="text-align: center; margin: 5rem;">About me</ColorEffectText>
+  <ColorEffectText style="text-align: center; margin: 5rem">About me</ColorEffectText>
   <div class="about">
-    <FlexDiv style="border-bottom: 1px solid var(--secondary); padding: 2rem;">
+    <FlexDiv style="border-bottom: 1px solid var(--secondary); padding: 2rem">
       <div style="width: 50%; display: block">
-        <HighlightedText>
-          Experienced engineers focused on quality
-        </HighlightedText>
+        <HighlightedText> Experienced engineers focused on quality </HighlightedText>
       </div>
       <div style="width: 50%; display: block">
         <p>
@@ -21,7 +19,7 @@ import FlexDiv from "@/common/FlexDiv.vue";
         </p>
       </div>
     </FlexDiv>
-    <FlexDiv style="border-bottom: 1px solid var(--secondary); padding: 2rem;">
+    <FlexDiv style="border-bottom: 1px solid var(--secondary); padding: 2rem">
       <div style="width: 50%; display: block">
         <HighlightedText>Innovative tech mind</HighlightedText>
       </div>
@@ -33,7 +31,7 @@ import FlexDiv from "@/common/FlexDiv.vue";
         </p>
       </div>
     </FlexDiv>
-    <FlexDiv style="padding: 2rem;">
+    <FlexDiv style="padding: 2rem">
       <div style="width: 50%; display: block">
         <HighlightedText>Willing to step up</HighlightedText>
       </div>
