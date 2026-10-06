@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { Gauge, Layers, NotebookPen, Users } from '@lucide/vue'
+import { Gauge, Layers, Network, NotebookPen } from '@lucide/vue'
 import { Card, GridLayout, Icon } from '@/shared/ui'
 import PageSection from './PageSection.vue'
 
@@ -8,8 +8,8 @@ const { t } = useI18n()
 const OFFERS = [
   { key: 'audit', icon: Gauge },
   { key: 'discovery', icon: NotebookPen },
-  { key: 'modernization', icon: Layers },
-  { key: 'teamExtension', icon: Users }
+  { key: 'migrationPlan', icon: Layers },
+  { key: 'architectureReview', icon: Network }
 ] as const
 </script>
 

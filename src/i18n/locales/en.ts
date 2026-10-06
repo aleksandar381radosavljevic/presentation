@@ -163,23 +163,23 @@ export default {
   },
   engagement: {
     title: 'Ways to work together',
-    intro: 'Start small with a clearly scoped engagement, or bring me in for the whole build.',
+    intro: 'Each engagement has a clear scope and ends with a concrete result.',
     items: {
       audit: {
         title: 'Performance audit',
-        text: 'Your real-time screen stutters or freezes under load. In one to two weeks I measure where the time goes and deliver a report with a prioritized fix plan.'
+        text: 'Your real-time screen stutters or freezes under load. I measure where the time goes and deliver a report with a prioritized fix plan.'
       },
       discovery: {
         title: 'Discovery and specification',
-        text: 'A paid workshop that turns your idea into a functional specification and clickable mockups, so development starts with a clear scope and estimate.'
+        text: 'A paid workshop that turns your idea into a functional specification, so development starts with a clear scope and estimate.'
       },
-      modernization: {
-        title: 'Legacy UI modernization',
-        text: 'Step-by-step migration of an aging operator or back-office interface to React, without stopping feature work. You also get a documented component library your team keeps building on.'
+      migrationPlan: {
+        title: 'Migration plan',
+        text: 'I assess your aging operator or back-office interface and deliver a step-by-step migration plan, plus the foundation of a component library your team builds on.'
       },
-      teamExtension: {
-        title: 'Team extension',
-        text: 'For software companies and system integrators: I join your team as a dedicated real-time frontend engineer, working within your process, tooling and delivery standards.'
+      architectureReview: {
+        title: 'Architecture review',
+        text: 'For software companies and system integrators: I review the frontend architecture of your real-time application, or help your team design one, so it holds up under live data.'
       }
     }
   },
