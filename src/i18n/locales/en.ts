@@ -80,7 +80,7 @@ export default {
   how: {
     title: 'How I work',
     intro:
-      'Good software starts long before the first line of code. Each step ends with something concrete you can review. On larger projects I work alongside a business analyst and a QA engineer.',
+      'Good software starts long before the first line of code. Each step ends with something concrete you can review.',
     deliverableLabel: 'You get:',
     principlesTitle: 'Principles for operator screens',
     principles: [
