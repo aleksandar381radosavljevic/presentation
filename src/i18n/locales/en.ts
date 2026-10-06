@@ -45,9 +45,13 @@ export default {
         title: 'Web applications',
         text: 'Business applications in React, Vue and TypeScript, from standard admin panels and forms to large single-page apps, with .NET and SQL Server on the backend when the project needs it.'
       },
+      hmi: {
+        title: 'Web-based HMI',
+        text: 'Human-machine interfaces that run in the browser: overview and detail screens, alarms and states an operator reads at a glance, a design system that keeps every screen consistent, and rendering that holds up under live data.'
+      },
       realtime: {
-        title: 'Real-time data and visualization',
-        text: 'Interfaces that stay fast under a constant stream of data: canvas scenes with thousands of interactive elements, live charts and monitoring dashboards.'
+        title: 'Real-time data visualization',
+        text: 'Live charts and monitoring dashboards that stay fast under a constant stream of device data, with data intake kept separate from rendering.'
       },
       modernization: {
         title: 'Legacy modernization',
@@ -106,8 +110,8 @@ export default {
     items: {
       gridVisualization: {
         title: 'Real-time energy grid visualization',
-        meta: 'Energy · Frontend',
-        text: 'A canvas-based interface for monitoring an energy grid in real time. More than 10,000 interactive elements stay smooth while the server pushes live updates over SignalR, with zoom, pan, element selection and separate edit and preview modes. Built as a progressive web app.'
+        meta: 'Energy · Web HMI · Frontend',
+        text: 'A canvas-based web HMI for monitoring an energy grid in real time. More than 10,000 interactive elements stay smooth while the server pushes live updates over SignalR, with zoom, pan, element selection and separate edit and preview modes. Built as a progressive web app.'
       },
       liveDashboards: {
         title: 'Live dashboards for measurement devices',
