@@ -6,13 +6,23 @@ const sr: typeof en = {
   },
   nav: {
     about: 'О мени',
-    experience: 'Искуство',
-    education: 'Образовање',
-    certifications: 'Сертификати',
-    skills: 'Вештине',
-    projects: 'Пројекти'
+    process: 'Како радим',
+    why: 'Зашто ја',
+    expertise: 'Експертиза'
+  },
+  ui: {
+    skipToContent: 'Пређи на садржај',
+    mainNav: 'Главна навигација',
+    openMenu: 'Отвори мени',
+    closeMenu: 'Затвори мени',
+    language: 'Језик',
+    theme: 'Тема',
+    themeLight: 'Светла',
+    themeDark: 'Тамна',
+    themeSystem: 'Системска'
   },
   heading: {
+    photoAlt: 'Портрет Александра Радосављевића',
     greeting: 'Здраво, ја сам',
     name: 'Александар Радосављевић',
     role: 'Софтверски инжењер & Вођа тима за фронтенд',

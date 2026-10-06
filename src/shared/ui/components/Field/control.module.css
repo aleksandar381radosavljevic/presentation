@@ -1,0 +1,46 @@
+/* Shared look of text controls (input, textarea, select). */
+.control {
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--control-md);
+  padding: 0 var(--space-3);
+  font: 400 15px/24px var(--font-sans);
+  color: var(--ink);
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  transition: border-color 120ms ease;
+}
+.control::placeholder {
+  color: var(--ink-muted);
+}
+/* Hover: darker border + subtle surface layer (placeholder stays ≥4.5:1 in both themes). */
+.control:hover:not(:disabled):not(:focus) {
+  border-color: var(--ink-muted);
+  background-image: linear-gradient(color-mix(in srgb, var(--surface-hover) 60%, transparent) 0 0);
+}
+.control:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 0;
+  border-color: var(--accent);
+}
+.control:disabled {
+  cursor: not-allowed;
+  color: var(--ink-disabled);
+  background: var(--surface-sunken);
+  border-color: var(--line);
+}
+.control[aria-invalid='true'] {
+  border: 2px solid var(--danger);
+}
+
+.sm {
+  height: var(--control-sm);
+  font-size: 13px;
+}
+.md {
+}
+.lg {
+  height: var(--control-lg);
+  padding: 0 var(--space-4);
+}

@@ -4,13 +4,23 @@ export default {
   },
   nav: {
     about: 'About',
-    experience: 'Experience',
-    education: 'Education',
-    certifications: 'Certifications',
-    skills: 'Skills',
-    projects: 'Projects'
+    process: 'How I work',
+    why: 'Why me',
+    expertise: 'Expertise'
+  },
+  ui: {
+    skipToContent: 'Skip to content',
+    mainNav: 'Main navigation',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    language: 'Language',
+    theme: 'Theme',
+    themeLight: 'Light',
+    themeDark: 'Dark',
+    themeSystem: 'System'
   },
   heading: {
+    photoAlt: 'Portrait of Aleksandar Radosavljević',
     greeting: "Hi, I'm",
     name: 'Aleksandar Radosavljević',
     role: 'Software Engineer & Frontend Team Lead',
