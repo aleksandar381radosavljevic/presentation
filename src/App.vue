@@ -2,10 +2,11 @@
 import { MainContainer } from '@/shared/ui'
 import SiteHeader from './sections/SiteHeader.vue'
 import HeroSection from './sections/HeroSection.vue'
-import AboutSection from './sections/AboutSection.vue'
+import ServicesSection from './sections/ServicesSection.vue'
 import ProcessSection from './sections/ProcessSection.vue'
-import WhySection from './sections/WhySection.vue'
-import ExpertiseSection from './sections/ExpertiseSection.vue'
+import ProjectsSection from './sections/ProjectsSection.vue'
+import ExperienceSection from './sections/ExperienceSection.vue'
+import TechnologiesSection from './sections/TechnologiesSection.vue'
 import SiteFooter from './sections/SiteFooter.vue'
 </script>
 
@@ -13,10 +14,11 @@ import SiteFooter from './sections/SiteFooter.vue'
   <SiteHeader />
   <MainContainer :gap="{ base: 12, lg: 16 }">
     <HeroSection />
-    <AboutSection />
+    <ServicesSection />
     <ProcessSection />
-    <WhySection />
-    <ExpertiseSection />
+    <ProjectsSection />
+    <ExperienceSection />
+    <TechnologiesSection />
   </MainContainer>
   <SiteFooter />
 </template>

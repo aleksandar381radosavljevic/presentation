@@ -4,6 +4,7 @@ import { Button, Logo, MainContainer } from '@/shared/ui'
 import { site } from '@/config/site'
 
 const { t } = useI18n()
+const year = new Date().getFullYear()
 </script>
 
 <template>
@@ -11,11 +12,12 @@ const { t } = useI18n()
     <MainContainer as="div" :padding-y="{ base: 8, lg: 12 }">
       <div :class="$style.inner">
         <Logo :size="48" />
-        <h2 class="os-text-h2">{{ t('footer.title') }}</h2>
+        <h2 :class="['os-text-h2', $style.title]">{{ t('footer.title') }}</h2>
+        <p :class="['os-text-body-lg', $style.muted]">{{ t('footer.text') }}</p>
         <Button v-if="site.contactEmail" variant="primary" :href="`mailto:${site.contactEmail}`">
           {{ t('footer.contact') }}
         </Button>
-        <p :class="['os-text-caption', $style.copyright]">{{ t('footer.copyright') }}</p>
+        <p :class="['os-text-caption', $style.copyright]">{{ t('footer.copyright', { year }) }}</p>
       </div>
     </MainContainer>
   </footer>
@@ -34,6 +36,10 @@ const { t } = useI18n()
   gap: var(--space-4);
   text-align: center;
 }
+.title {
+  max-width: 32ch;
+}
+.muted,
 .copyright {
   color: var(--ink-muted);
 }
