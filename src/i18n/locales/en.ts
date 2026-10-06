@@ -125,33 +125,33 @@ export default {
     items: {
       gridVisualization: {
         title: 'Real-time energy grid visualization',
-        meta: 'Energy · Web HMI · Frontend',
-        text: 'A canvas-based web HMI for monitoring an energy grid in real time. More than 10,000 interactive elements stay smooth while the server pushes live updates over SignalR, with zoom, pan, element selection and separate edit and preview modes. Built as a progressive web app.'
+        meta: 'Energy · Web HMI · Frontend architecture',
+        text: 'I designed the frontend architecture and was one of the developers who built it: how rendering, live updates and application state fit together, and which components and libraries to use. The canvas-based web HMI monitors an energy grid in real time. More than 10,000 interactive elements stay smooth while the server pushes live updates over SignalR, with zoom, pan, element selection and separate edit and preview modes. Built as a progressive web app.'
       },
       liveDashboards: {
         title: 'Live dashboards for measurement devices',
-        meta: 'IoT · Frontend',
-        text: 'A React application that turns timestamped readings from small measuring devices into live D3.js charts. New measurements arrive every 50 ms, so receiving data is decoupled from re-rendering the screen and the interface stays responsive.'
+        meta: 'IoT · Frontend architecture',
+        text: 'I designed the frontend architecture and was one of the developers. The React application turns timestamped readings from small measuring devices into live D3.js charts. New measurements arrive every 50 ms, so the architecture keeps receiving data separate from re-rendering the screen and the interface stays responsive.'
       },
       legacyMigration: {
         title: 'Legacy application migration',
         meta: 'Enterprise · Frontend team lead · 2024 – present',
-        text: 'Migration of a large application of around 50 pages, built on jQuery and custom UI libraries, into a modern single-page application, done in parallel with the development of new features. The work includes a component catalog in Storybook and shared libraries published as packages from an Nx monorepo, with sign-in through Keycloak.'
+        text: 'I lead the frontend team that is migrating a large application of around 50 pages, built on jQuery and custom UI libraries, into a modern single-page application, in parallel with the development of new features. The work includes a component catalog in Storybook and shared libraries published as packages from an Nx monorepo, with sign-in through Keycloak.'
       },
       digitalization: {
         title: 'Business process digitalization',
         meta: 'Enterprise client · Development team lead · ongoing',
-        text: "Digitalizing a client's existing business processes, from the first workshops onward. I lead a team of three (backend, frontend and QA). Together with a business analyst I ran the requirements meetings, documented the decisions and wrote the functional specification, and the team built the application mockups. Technical documentation and the database design are next."
+        text: "I lead the development team of three (backend, frontend and QA) that is digitalizing a client's existing business processes, from the first workshops onward. Together with a business analyst I ran the requirements meetings, documented the decisions and wrote the functional specification, and the team built the application mockups. Technical documentation and the database design are next."
       },
       notificationEngine: {
         title: 'Notification engine',
-        meta: 'Platform service · 2022 – 2023',
-        text: 'A plug-and-play service that attaches to an application and accepts its notifications. Every user decides which notifications they want and on which channels: SMS, email or push notifications.'
+        meta: 'Platform service · Frontend team lead · 2022 – 2023',
+        text: 'I led the frontend team on a plug-and-play service that attaches to an application and accepts its notifications. Every user decides which notifications they want and on which channels: SMS, email or push notifications.'
       },
       scannerService: {
         title: 'Scanner access from the browser',
-        meta: 'Document scanning · 2021',
-        text: 'An extension of NAPS2, the open-source scanning library, that lets a web application drive document scanners through a Windows service. It works with both WIA and TWAIN scanner drivers.'
+        meta: 'Document scanning · Developer, then maintainer · 2021',
+        text: 'Together with the senior colleague who designed it, I built an extension of NAPS2, the open-source scanning library, that lets a web application drive document scanners through a Windows service. It works with both WIA and TWAIN scanner drivers, and I later took over its maintenance.'
       }
     }
   },
