@@ -16,6 +16,7 @@ import { currentLocale, setLocale, supportedLocales } from '@/i18n'
 import { useActiveSection } from './useActiveSection'
 
 const SECTIONS = [
+  'about',
   'services',
   'process',
   'projects',

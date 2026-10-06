@@ -3,6 +3,7 @@ export default {
     title: 'Aleksandar Radosavljević'
   },
   nav: {
+    about: 'About',
     services: 'Services',
     process: 'How I work',
     projects: 'Projects',
@@ -26,16 +27,29 @@ export default {
     greeting: "Hi, I'm",
     name: 'Aleksandar Radosavljević',
     role: 'Software Engineer & Frontend Team Lead',
-    headline: 'Real-time interfaces for industrial systems.',
     pitch:
-      'From the first requirements workshop to a live view of 10,000 grid elements, I build software operators can rely on.',
+      'I build web applications from the first requirements workshop to delivery, and I lead a frontend team.',
+    factsLabel: 'Key figures',
+    card: {
+      locationLabel: 'Based in',
+      location: 'Niš, Serbia',
+      languagesLabel: 'Languages',
+      languages: 'Serbian, English'
+    },
     facts: [
-      { value: '10,000+', label: 'live elements on one screen' },
-      { value: '50 ms', label: 'device data refresh' },
-      { value: '7+ years', label: 'team lead since 2022' }
+      { value: '7+ years', label: 'building production software' },
+      { value: 'Since 2022', label: 'leading a frontend team' },
+      { value: 'BSc', label: 'Computer Science, University of Niš' },
+      { value: 'MCSA', label: 'Microsoft certified: Web Applications' }
     ],
     discussProject: 'Discuss a project',
     seeProjects: 'See projects'
+  },
+  about: {
+    title: 'About me',
+    paragraphs: [
+      'I specialize in real-time interfaces for industrial systems. Most of my work is on interfaces where the data never stops: monitoring an energy grid in real time and live readings from measuring devices. I also take part in the work before the code: I meet the people who will use the software, ask questions and write down exactly what it needs to do.'
+    ]
   },
   services: {
     title: 'What I do',
@@ -105,7 +119,8 @@ export default {
   },
   projects: {
     title: 'Selected projects',
-    intro: 'Client names stay confidential. The problems and my role are described as they were.',
+    intro:
+      'These projects were built with my team at COMING – Computer Engineering. Client names stay confidential; for each one I describe the problem and my role.',
     stackLabel: 'Technologies',
     items: {
       gridVisualization: {

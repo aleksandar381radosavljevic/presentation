@@ -2,6 +2,7 @@
 import { MainContainer } from '@/shared/ui'
 import SiteHeader from './sections/SiteHeader.vue'
 import HeroSection from './sections/HeroSection.vue'
+import AboutSection from './sections/AboutSection.vue'
 import ServicesSection from './sections/ServicesSection.vue'
 import ProcessSection from './sections/ProcessSection.vue'
 import ProjectsSection from './sections/ProjectsSection.vue'
@@ -13,14 +14,23 @@ import SiteFooter from './sections/SiteFooter.vue'
 
 <template>
   <SiteHeader />
-  <MainContainer :gap="{ base: 12, lg: 16 }">
+  <main id="main-content" tabindex="-1" :class="$style.main">
     <HeroSection />
-    <ServicesSection />
-    <ProcessSection />
-    <ProjectsSection />
-    <EngagementSection />
-    <ExperienceSection />
-    <TechnologiesSection />
-  </MainContainer>
+    <MainContainer as="div" :gap="{ base: 12, lg: 16 }" :padding-y="{ base: 12, lg: 16 }">
+      <AboutSection />
+      <ServicesSection />
+      <ProcessSection />
+      <ProjectsSection />
+      <EngagementSection />
+      <ExperienceSection />
+      <TechnologiesSection />
+    </MainContainer>
+  </main>
   <SiteFooter />
 </template>
+
+<style module>
+.main:focus {
+  outline: none; /* skip-link target, not an interactive element */
+}
+</style>

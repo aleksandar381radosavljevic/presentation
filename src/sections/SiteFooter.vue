@@ -8,7 +8,7 @@ const year = new Date().getFullYear()
 </script>
 
 <template>
-  <footer id="contact" :class="$style.footer">
+  <footer id="contact" :class="$style.footer" data-theme="dark">
     <MainContainer as="div" :padding-y="{ base: 8, lg: 12 }">
       <div :class="$style.inner">
         <Logo :size="48" />
@@ -24,8 +24,10 @@ const year = new Date().getFullYear()
 </template>
 
 <style module>
+/* Always dark: closes the page the way the hero opens it, in either theme. */
 .footer {
-  background: var(--surface-sunken);
+  color: var(--ink);
+  background: var(--surface);
   border-top: 1px solid var(--line);
   scroll-margin-top: 56px;
 }
