@@ -14,6 +14,7 @@ const { t } = useI18n()
         <p :class="['os-text-label', $style.greeting]">{{ t('heading.greeting') }}</p>
         <h1 id="hero-title" class="os-text-display">{{ t('heading.name') }}</h1>
         <p :class="['os-text-h3', $style.role]">{{ t('heading.role') }}</p>
+        <p :class="['os-text-h2', $style.headline]">{{ t('heading.headline') }}</p>
         <p :class="['os-text-body-lg', $style.pitch]">{{ t('heading.pitch') }}</p>
         <ul :class="$style.facts">
           <li v-for="(_, i) in en.heading.facts" :key="i" :class="$style.fact">
@@ -58,8 +59,12 @@ const { t } = useI18n()
 .role {
   color: var(--ink-muted);
 }
+.headline {
+  max-width: 32ch;
+}
 .pitch {
   max-width: 60ch;
+  color: var(--ink-muted);
 }
 .facts {
   display: grid;

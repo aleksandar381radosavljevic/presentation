@@ -6,15 +6,16 @@ import PageSection from './PageSection.vue'
 
 const { t } = useI18n()
 const SERVICES = [
-  { key: 'webApps', icon: AppWindow },
   { key: 'realtime', icon: Activity },
+  { key: 'leadership', icon: ClipboardList },
   { key: 'modernization', icon: RefreshCcw },
-  { key: 'leadership', icon: ClipboardList }
+  { key: 'webApps', icon: AppWindow }
 ] as const
 </script>
 
 <template>
   <PageSection id="services" :title="t('services.title')">
+    <p :class="['os-text-body-lg', $style.intro]">{{ t('services.intro') }}</p>
     <GridLayout as="ul" :columns="{ base: 1, md: 2 }" :class="$style.list">
       <Card v-for="service in SERVICES" :key="service.key" as="li">
         <div :class="$style.service">
@@ -28,6 +29,10 @@ const SERVICES = [
 </template>
 
 <style module>
+.intro {
+  max-width: 60ch;
+  color: var(--ink-muted);
+}
 .list {
   margin: 0;
   padding: 0;

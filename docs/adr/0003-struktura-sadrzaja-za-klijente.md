@@ -27,6 +27,15 @@ anonimizovane studije slučaja: domen i vrsta klijenta, problem, uloga, tehnolog
 klijenta i internih naziva. Glavni poziv na akciju je "Razgovarajmo o projektu". Dugme za CV
 se dodaje kad CV postoji.
 
+## Pozicioniranje
+
+Naslov sajta prodaje nišu: interfejse u realnom vremenu za industrijske sisteme (mreža sa
+10.000+ elemenata, podaci sa uređaja na 50 ms). Proces od analize do isporuke je način rada
+i dokaz u sekciji Kako radim. Digitalizacija procesa nije u naslovu, jer je za nju dokaz
+samo jedan projekat koji je još u toku. Na sajtu se namerno ne tvrde domenska ekspertiza
+(SCADA, Industry 4.0), embedded razvoj ni AI. Obrazloženje je u
+`notes/pozicioniranje.md` u fajlovima projekta.
+
 ## Posledice
 
 - Sadržaj je i dalje samo u `src/i18n/locales/{en,sr}.ts`; nazivi tehnologija su u

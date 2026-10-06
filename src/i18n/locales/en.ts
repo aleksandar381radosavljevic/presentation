@@ -25,18 +25,20 @@ export default {
     greeting: "Hi, I'm",
     name: 'Aleksandar Radosavljević',
     role: 'Software Engineer & Frontend Team Lead',
+    headline: 'Real-time interfaces for industrial systems.',
     pitch:
-      'I build web applications for demanding domains, from real-time energy grid monitoring to the digitalization of business processes. Every project starts with a careful analysis of what you actually need.',
+      'From the first requirements workshop to a live view of 10,000 grid elements, I build software operators can rely on.',
     facts: [
-      { value: '7+ years', label: 'building production software' },
-      { value: 'Team lead', label: 'of a frontend team since 2022' },
-      { value: 'Certified', label: 'Microsoft and React developer' }
+      { value: '10,000+', label: 'live elements on one screen' },
+      { value: '50 ms', label: 'device data refresh' },
+      { value: '7+ years', label: 'team lead since 2022' }
     ],
     discussProject: 'Discuss a project',
     seeProjects: 'See projects'
   },
   services: {
     title: 'What I do',
+    intro: 'When the data never stops, neither can the interface.',
     items: {
       webApps: {
         title: 'Web applications',
