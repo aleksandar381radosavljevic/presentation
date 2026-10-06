@@ -53,7 +53,7 @@ export default {
   },
   services: {
     title: 'What I do',
-    intro: 'When the data never stops, neither can the interface.',
+    intro: 'Where I can help, from the first workshop to the screen in production.',
     items: {
       webApps: {
         title: 'Web applications',
@@ -92,22 +92,22 @@ export default {
     steps: [
       {
         title: 'Understanding your business',
-        text: 'Together with a business analyst, I meet your team, learn how the work is done today and propose how it could be digitalized.',
+        text: 'I meet your team, learn how the work is done today and propose how it could be digitalized.',
         deliverable: 'meeting minutes with every decision and requirement.'
       },
       {
         title: 'Functional specification',
-        text: 'The minutes become a functional specification that describes what the software does, screen by screen and rule by rule.',
+        text: 'I turn the minutes into a functional specification that describes what the software does, screen by screen and rule by rule.',
         deliverable: 'a specification to approve before development starts.'
       },
       {
         title: 'Design',
-        text: 'The team turns the specification into application mockups, followed by technical documentation and the database design.',
+        text: 'The specification becomes application mockups, followed by technical documentation and the database design.',
         deliverable: 'mockups to review and a documented architecture.'
       },
       {
         title: 'Development',
-        text: 'The team builds the application against the approved specification. Every change is reviewed before it is merged, and a QA engineer tests it against the requirements.',
+        text: 'Development follows the approved specification. Every change is reviewed before it is merged and tested against the requirements.',
         deliverable: 'tested software that does what was agreed.'
       },
       {
@@ -122,65 +122,71 @@ export default {
     intro:
       'These projects were built with my team at COMING – Computer Engineering. Client names stay confidential; for each one I describe the problem and my role.',
     stackLabel: 'Technologies',
+    personalTitle: 'Personal projects',
     items: {
       gridVisualization: {
         title: 'Real-time energy grid visualization',
-        meta: 'Energy · Web HMI · Frontend',
-        text: 'A canvas-based web HMI for monitoring an energy grid in real time. More than 10,000 interactive elements stay smooth while the server pushes live updates over SignalR, with zoom, pan, element selection and separate edit and preview modes. Built as a progressive web app.'
+        meta: 'Energy · Web HMI · Frontend architecture',
+        text: 'I designed the frontend architecture and was one of the developers who built it: how rendering, live updates and application state fit together, and which components and libraries to use. The canvas-based web HMI monitors an energy grid in real time. More than 10,000 interactive elements stay smooth while the server pushes live updates over SignalR, with zoom, pan, element selection and separate edit and preview modes. Built as a progressive web app.'
       },
       liveDashboards: {
         title: 'Live dashboards for measurement devices',
-        meta: 'IoT · Frontend',
-        text: 'A React application that turns timestamped readings from small measuring devices into live D3.js charts. New measurements arrive every 50 ms, so receiving data is decoupled from re-rendering the screen and the interface stays responsive.'
+        meta: 'IoT · Frontend architecture',
+        text: 'I designed the frontend architecture and was one of the developers. The React application turns timestamped readings from small measuring devices into live D3.js charts. New measurements arrive every 50 ms, so the architecture keeps receiving data separate from re-rendering the screen and the interface stays responsive.'
       },
       legacyMigration: {
         title: 'Legacy application migration',
         meta: 'Enterprise · Frontend team lead · 2024 – present',
-        text: 'Migration of a large application of around 50 pages, built on jQuery and custom UI libraries, into a modern single-page application, done in parallel with the development of new features. The work includes a component catalog in Storybook and shared libraries published as packages from an Nx monorepo, with sign-in through Keycloak.'
+        text: 'I lead the frontend team that is migrating a large application of around 50 pages, built on jQuery and custom UI libraries, into a modern single-page application, in parallel with the development of new features. The work includes a component catalog in Storybook and shared libraries published as packages from an Nx monorepo, with sign-in through Keycloak.'
       },
       digitalization: {
         title: 'Business process digitalization',
         meta: 'Enterprise client · Development team lead · ongoing',
-        text: "Digitalizing a client's existing business processes, from the first workshops onward. I lead a team of three (backend, frontend and QA). Together with a business analyst I ran the requirements meetings, documented the decisions and wrote the functional specification, and the team built the application mockups. Technical documentation and the database design are next."
+        text: "I lead the development team of three (backend, frontend and QA) that is digitalizing a client's existing business processes, from the first workshops onward. Together with a business analyst I ran the requirements meetings, documented the decisions and wrote the functional specification, and the team built the application mockups. Technical documentation and the database design are next."
       },
       notificationEngine: {
         title: 'Notification engine',
-        meta: 'Platform service · 2022 – 2023',
-        text: 'A plug-and-play service that attaches to an application and accepts its notifications. Every user decides which notifications they want and on which channels: SMS, email or push notifications.'
+        meta: 'Platform service · Frontend team lead · 2022 – 2023',
+        text: 'I led the frontend team on a plug-and-play service that attaches to an application and accepts its notifications. Every user decides which notifications they want and on which channels: SMS, email or push notifications.'
+      },
+      pushInstructions: {
+        title: 'Work instructions over web push',
+        meta: 'Personal project · PWA',
+        text: "I built this project on my own to show a progressive web app with web push in practice. A .NET backend sends work instructions, and they reach an employee's phone as push notifications through the React app."
       },
       scannerService: {
         title: 'Scanner access from the browser',
-        meta: 'Document scanning · 2021',
-        text: 'An extension of NAPS2, the open-source scanning library, that lets a web application drive document scanners through a Windows service. It works with both WIA and TWAIN scanner drivers.'
+        meta: 'Document scanning · Developer, then maintainer · 2021',
+        text: 'Together with the senior colleague who designed it, I built an extension of NAPS2, the open-source scanning library, that lets a web application drive document scanners through a Windows service. It works with both WIA and TWAIN scanner drivers, and I later took over its maintenance.'
       }
     }
   },
   engagement: {
     title: 'Ways to work together',
-    intro: 'Start small with a clearly scoped engagement, or bring me in for the whole build.',
+    intro: 'Each engagement has a clear scope and ends with a concrete result.',
     items: {
       audit: {
         title: 'Performance audit',
-        text: 'Your real-time screen stutters or freezes under load. In one to two weeks I measure where the time goes and deliver a report with a prioritized fix plan.'
+        text: 'Your real-time screen stutters or freezes under load. I measure where the time goes and deliver a report with a prioritized fix plan.'
       },
       discovery: {
         title: 'Discovery and specification',
-        text: 'A paid workshop that turns your idea into a functional specification and clickable mockups, so development starts with a clear scope and estimate.'
+        text: 'A paid workshop that turns your idea into a functional specification, so development starts with a clear scope and estimate.'
       },
-      modernization: {
-        title: 'Legacy UI modernization',
-        text: 'Step-by-step migration of an aging operator or back-office interface to React, without stopping feature work. You also get a documented component library your team keeps building on.'
+      migrationPlan: {
+        title: 'Migration plan',
+        text: 'I assess your aging operator or back-office interface and deliver a step-by-step migration plan, plus the foundation of a component library your team builds on.'
       },
-      teamExtension: {
-        title: 'Team extension',
-        text: 'For software companies and system integrators: I join your team as a dedicated real-time frontend engineer, working within your process, tooling and delivery standards.'
+      architectureReview: {
+        title: 'Architecture review',
+        text: 'For software companies and system integrators: I review the frontend architecture of your real-time application, or help your team design one, so it holds up under live data.'
       }
     }
   },
   experience: {
     title: 'Experience',
     intro:
-      'I started on the backend with .NET and SQL Server, moved to the frontend with React and Vue, and today I lead a frontend team while staying involved in every part of development and deployment.',
+      'I started on the backend with .NET and SQL Server, moved to the frontend with React and Vue, and today I lead a frontend team while staying involved from requirements to delivery.',
     company: 'COMING – Computer Engineering, Niš',
     roles: [
       { title: 'Frontend Team Lead', period: 'May 2022 – present' },
@@ -196,7 +202,6 @@ export default {
   },
   technologies: {
     title: 'Technologies',
-    groupsTitle: 'By area',
     groups: {
       frontend: 'Frontend',
       visualization: 'Visualization',

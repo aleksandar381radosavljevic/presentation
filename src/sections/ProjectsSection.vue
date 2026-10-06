@@ -16,6 +16,8 @@ const PROJECTS = [
   { key: 'notificationEngine', stack: [] },
   { key: 'scannerService', stack: ['C#', '.NET', 'NAPS2', 'WIA', 'TWAIN'] }
 ] as const
+// Built on his own time, shown apart from the work done for clients.
+const PERSONAL = [{ key: 'pushInstructions', stack: ['.NET', 'React', 'PWA', 'Web Push'] }] as const
 </script>
 
 <template>
@@ -24,6 +26,27 @@ const PROJECTS = [
     <GridLayout as="ul" :columns="{ base: 1, md: 2 }" :class="$style.list">
       <Card
         v-for="project in PROJECTS"
+        :key="project.key"
+        as="li"
+        :title="t(`projects.items.${project.key}.title`)"
+        :description="t(`projects.items.${project.key}.meta`)"
+      >
+        <p :class="$style.text">{{ t(`projects.items.${project.key}.text`) }}</p>
+        <ul
+          v-if="project.stack.length"
+          :class="$style.stack"
+          :aria-label="t('projects.stackLabel')"
+        >
+          <li v-for="tech in project.stack" :key="tech">
+            <Badge>{{ tech }}</Badge>
+          </li>
+        </ul>
+      </Card>
+    </GridLayout>
+    <h3 class="os-text-h3">{{ t('projects.personalTitle') }}</h3>
+    <GridLayout as="ul" :columns="{ base: 1, md: 2 }" :class="$style.list">
+      <Card
+        v-for="project in PERSONAL"
         :key="project.key"
         as="li"
         :title="t(`projects.items.${project.key}.title`)"
