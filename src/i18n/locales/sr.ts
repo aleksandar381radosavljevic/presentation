@@ -188,7 +188,7 @@ const sr: typeof en = {
   experience: {
     title: 'Искуство',
     intro:
-      'Почео сам на бекенду са .NET-ом и SQL Server-ом, прешао на фронтенд са React-ом и Vue-ом, а данас водим фронтенд тим и учествујем у свим фазама развоја и испоруке софтвера.',
+      'Почео сам на бекенду са .NET-ом и SQL Server-ом, прешао на фронтенд са React-ом и Vue-ом, а данас водим фронтенд тим и остајем укључен од захтева до испоруке.',
     company: 'COMING – Computer Engineering, Ниш',
     roles: [
       { title: 'Вођа фронтенд тима', period: 'мај 2022 – данас' },
@@ -205,7 +205,6 @@ const sr: typeof en = {
   },
   technologies: {
     title: 'Технологије',
-    groupsTitle: 'По областима',
     groups: {
       frontend: 'Фронтенд',
       visualization: 'Визуелизација',

@@ -186,7 +186,7 @@ export default {
   experience: {
     title: 'Experience',
     intro:
-      'I started on the backend with .NET and SQL Server, moved to the frontend with React and Vue, and today I lead a frontend team while staying involved in every part of development and deployment.',
+      'I started on the backend with .NET and SQL Server, moved to the frontend with React and Vue, and today I lead a frontend team while staying involved from requirements to delivery.',
     company: 'COMING – Computer Engineering, Niš',
     roles: [
       { title: 'Frontend Team Lead', period: 'May 2022 – present' },
@@ -202,7 +202,6 @@ export default {
   },
   technologies: {
     title: 'Technologies',
-    groupsTitle: 'By area',
     groups: {
       frontend: 'Frontend',
       visualization: 'Visualization',
