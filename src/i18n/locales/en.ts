@@ -122,6 +122,7 @@ export default {
     intro:
       'These projects were built with my team at COMING – Computer Engineering. Client names stay confidential; for each one I describe the problem and my role.',
     stackLabel: 'Technologies',
+    personalTitle: 'Personal projects',
     items: {
       gridVisualization: {
         title: 'Real-time energy grid visualization',
@@ -147,6 +148,11 @@ export default {
         title: 'Notification engine',
         meta: 'Platform service · Frontend team lead · 2022 – 2023',
         text: 'I led the frontend team on a plug-and-play service that attaches to an application and accepts its notifications. Every user decides which notifications they want and on which channels: SMS, email or push notifications.'
+      },
+      pushInstructions: {
+        title: 'Work instructions over web push',
+        meta: 'Personal project · PWA',
+        text: "I built this project on my own to show a progressive web app with web push in practice. A .NET backend sends work instructions, and they reach an employee's phone as push notifications through the React app."
       },
       scannerService: {
         title: 'Scanner access from the browser',
