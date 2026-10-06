@@ -8,10 +8,10 @@ const { t } = useI18n()
 const PROJECTS = [
   {
     key: 'gridVisualization',
-    stack: ['React', 'TypeScript', 'Konva.js', 'HTML5 Canvas', 'PWA']
+    stack: ['React', 'TypeScript', 'Konva.js', 'SignalR', 'PWA']
   },
   { key: 'liveDashboards', stack: ['React', 'TypeScript', 'D3.js'] },
-  { key: 'legacyMigration', stack: ['React', 'TypeScript', 'Nx', 'Keycloak'] },
+  { key: 'legacyMigration', stack: ['React', 'TypeScript', 'Nx', 'Storybook', 'Keycloak'] },
   { key: 'digitalization', stack: [] },
   { key: 'notificationEngine', stack: [] },
   { key: 'scannerService', stack: ['C#', '.NET', 'NAPS2', 'WIA', 'TWAIN'] }

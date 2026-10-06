@@ -79,8 +79,8 @@ export default {
       },
       {
         title: 'Development',
-        text: 'The team builds the application against the approved specification, with every change reviewed before it is merged.',
-        deliverable: 'software that does what was agreed.'
+        text: 'The team builds the application against the approved specification. Every change is reviewed before it is merged, and a QA engineer tests it against the requirements.',
+        deliverable: 'tested software that does what was agreed.'
       },
       {
         title: 'Delivery and support',
@@ -97,22 +97,22 @@ export default {
       gridVisualization: {
         title: 'Real-time energy grid visualization',
         meta: 'Energy · Frontend',
-        text: 'A canvas-based interface for monitoring an energy grid in real time. Thousands of interactive elements are rendered smoothly while live data updates them, with zoom, pan, element selection and separate edit and preview modes. Built as a progressive web app.'
+        text: 'A canvas-based interface for monitoring an energy grid in real time. More than 10,000 interactive elements stay smooth while the server pushes live updates over SignalR, with zoom, pan, element selection and separate edit and preview modes. Built as a progressive web app.'
       },
       liveDashboards: {
         title: 'Live dashboards for measurement devices',
         meta: 'IoT · Frontend',
-        text: 'A React application that turns large batches of timestamped readings from small measuring devices into live D3.js charts. The challenge was keeping the interface responsive while data arrives continuously and in volume.'
+        text: 'A React application that turns timestamped readings from small measuring devices into live D3.js charts. New measurements arrive every 50 ms, so receiving data is decoupled from re-rendering the screen and the interface stays responsive.'
       },
       legacyMigration: {
         title: 'Legacy application migration',
         meta: 'Enterprise · Frontend team lead · 2024 – present',
-        text: 'Migration of a large multi-page application built on jQuery and custom UI libraries into a modern single-page application, done in parallel with the development of new features. The codebase is an Nx monorepo, with sign-in through Keycloak.'
+        text: 'Migration of a large application of around 50 pages, built on jQuery and custom UI libraries, into a modern single-page application, done in parallel with the development of new features. The work includes a component catalog in Storybook and shared libraries published as packages from an Nx monorepo, with sign-in through Keycloak.'
       },
       digitalization: {
         title: 'Business process digitalization',
         meta: 'Enterprise client · Development team lead · ongoing',
-        text: "Digitalizing a client's existing business processes, from the first workshops onward. Together with a business analyst I ran the requirements meetings, documented the decisions and wrote the functional specification, and the team built the application mockups. Technical documentation and the database design are next."
+        text: "Digitalizing a client's existing business processes, from the first workshops onward. I lead a team of three (backend, frontend and QA). Together with a business analyst I ran the requirements meetings, documented the decisions and wrote the functional specification, and the team built the application mockups. Technical documentation and the database design are next."
       },
       notificationEngine: {
         title: 'Notification engine',
