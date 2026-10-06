@@ -53,7 +53,7 @@ export default {
   },
   services: {
     title: 'What I do',
-    intro: 'When the data never stops, neither can the interface.',
+    intro: 'Where I can help, from the first workshop to the screen in production.',
     items: {
       webApps: {
         title: 'Web applications',
