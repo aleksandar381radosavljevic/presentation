@@ -80,7 +80,7 @@ export default {
   how: {
     title: 'How I work',
     intro:
-      'Good software starts long before the first line of code. Each step ends with something concrete you can review.',
+      'Good software starts long before the first line of code. Each step ends with something concrete you can review. On larger projects I work alongside a business analyst and a QA engineer.',
     deliverableLabel: 'You get:',
     principlesTitle: 'Principles for operator screens',
     principles: [
@@ -92,22 +92,22 @@ export default {
     steps: [
       {
         title: 'Understanding your business',
-        text: 'Together with a business analyst, I meet your team, learn how the work is done today and propose how it could be digitalized.',
+        text: 'I meet your team, learn how the work is done today and propose how it could be digitalized.',
         deliverable: 'meeting minutes with every decision and requirement.'
       },
       {
         title: 'Functional specification',
-        text: 'The minutes become a functional specification that describes what the software does, screen by screen and rule by rule.',
+        text: 'I turn the minutes into a functional specification that describes what the software does, screen by screen and rule by rule.',
         deliverable: 'a specification to approve before development starts.'
       },
       {
         title: 'Design',
-        text: 'The team turns the specification into application mockups, followed by technical documentation and the database design.',
+        text: 'The specification becomes application mockups, followed by technical documentation and the database design.',
         deliverable: 'mockups to review and a documented architecture.'
       },
       {
         title: 'Development',
-        text: 'The team builds the application against the approved specification. Every change is reviewed before it is merged, and a QA engineer tests it against the requirements.',
+        text: 'Development follows the approved specification. Every change is reviewed before it is merged and tested against the requirements.',
         deliverable: 'tested software that does what was agreed.'
       },
       {
