@@ -15,7 +15,14 @@ import {
 import { currentLocale, setLocale, supportedLocales } from '@/i18n'
 import { useActiveSection } from './useActiveSection'
 
-const SECTIONS = ['services', 'process', 'projects', 'experience', 'technologies'] as const
+const SECTIONS = [
+  'services',
+  'process',
+  'projects',
+  'engagement',
+  'experience',
+  'technologies'
+] as const
 
 const { t } = useI18n()
 const { mode, setTheme } = useTheme()

@@ -5,6 +5,7 @@ import HeroSection from './sections/HeroSection.vue'
 import ServicesSection from './sections/ServicesSection.vue'
 import ProcessSection from './sections/ProcessSection.vue'
 import ProjectsSection from './sections/ProjectsSection.vue'
+import EngagementSection from './sections/EngagementSection.vue'
 import ExperienceSection from './sections/ExperienceSection.vue'
 import TechnologiesSection from './sections/TechnologiesSection.vue'
 import SiteFooter from './sections/SiteFooter.vue'
@@ -17,6 +18,7 @@ import SiteFooter from './sections/SiteFooter.vue'
     <ServicesSection />
     <ProcessSection />
     <ProjectsSection />
+    <EngagementSection />
     <ExperienceSection />
     <TechnologiesSection />
   </MainContainer>

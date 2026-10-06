@@ -6,6 +6,7 @@ export default {
     services: 'Services',
     process: 'How I work',
     projects: 'Projects',
+    engagement: 'Work together',
     experience: 'Experience',
     technologies: 'Technologies'
   },
@@ -50,7 +51,7 @@ export default {
       },
       modernization: {
         title: 'Legacy modernization',
-        text: 'Step-by-step migration of older multi-page applications to a modern architecture, without freezing the development of new features.'
+        text: 'Step-by-step migration of older multi-page applications to a modern architecture, without freezing the development of new features, plus a component library in Storybook that your team keeps using.'
       },
       leadership: {
         title: 'Analysis and technical leadership',
@@ -63,6 +64,13 @@ export default {
     intro:
       'Good software starts long before the first line of code. Each step ends with something concrete you can review.',
     deliverableLabel: 'You get:',
+    principlesTitle: 'Principles for operator screens',
+    principles: [
+      'Show what is abnormal; keep the normal calm.',
+      'Alarms that matter never drown in noise.',
+      'Connection status and data age are always visible.',
+      'The screen stays responsive, no matter how fast the data arrives.'
+    ],
     steps: [
       {
         title: 'Understanding your business',
@@ -125,6 +133,28 @@ export default {
         title: 'Scanner access from the browser',
         meta: 'Document scanning · 2021',
         text: 'An extension of NAPS2, the open-source scanning library, that lets a web application drive document scanners through a Windows service. It works with both WIA and TWAIN scanner drivers.'
+      }
+    }
+  },
+  engagement: {
+    title: 'Ways to work together',
+    intro: 'Start small with a clearly scoped engagement, or bring me in for the whole build.',
+    items: {
+      audit: {
+        title: 'Performance audit',
+        text: 'Your real-time screen stutters or freezes under load. In one to two weeks I measure where the time goes and deliver a report with a prioritized fix plan.'
+      },
+      discovery: {
+        title: 'Discovery and specification',
+        text: 'A paid workshop that turns your idea into a functional specification and clickable mockups, so development starts with a clear scope and estimate.'
+      },
+      modernization: {
+        title: 'Legacy UI modernization',
+        text: 'Step-by-step migration of an aging operator or back-office interface to React, without stopping feature work. You also get a documented component library your team keeps building on.'
+      },
+      teamExtension: {
+        title: 'Team extension',
+        text: 'For software companies and system integrators: I join your team as a dedicated real-time frontend engineer, working within your process, tooling and delivery standards.'
       }
     }
   },
