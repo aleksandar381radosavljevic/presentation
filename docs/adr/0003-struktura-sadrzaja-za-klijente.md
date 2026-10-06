@@ -1,6 +1,6 @@
 # ADR 0003: Struktura sadržaja okrenuta klijentima
 
-- Status: predloženo
+- Status: prihvaćeno
 - Datum: 2026-10-06
 
 ## Kontekst
