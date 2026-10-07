@@ -1,4 +1,4 @@
-# ADR 0006: Vidljiv kontakt i portret koji prati temu
+# ADR 0006: Vidljiv kontakt, a portret ostaje svetao u obe teme
 
 - Status: predloženo
 - Datum: 2026-10-07
@@ -42,17 +42,17 @@ Portret:
   - Svaki paket ima svoje dugme „Ask about this package“ koje otvara mejl sa nazivom paketa u
     naslovu, na jeziku stranice. Zajednički poziv „Discuss a package“ je uklonjen. Dok
     `site.contactEmail` nije popunjen, dugmad vode na footer.
-- Portret: opcija 2. `profile.webp` (800×880, providna pozadina) zamenjuje `profile.jpg`.
-  Ivice su očišćene od boje stare pozadine i blago zategnute, da ne ostane svetao rub na tamnoj
-  pozadini. Lice se obrađuje isto kao u v3: bez ulepšavanja. Skripta je
-  `redizajn/portret/portret-providni.py` u fajlovima projekta.
+- Portret: nijedna opcija. Isprobana je opcija 2 (providna slika sa tamnim okvirom u tamnoj
+  temi), ali se Aleksandru ne dopada portret na tamnoj pozadini. Zato ostaje portret v3 sa
+  svetlom pozadinom u obe teme. Svetao portret u tamnom hero-u je svesno prihvaćen.
+  Providna verzija i skripta ostaju u fajlovima projekta (`redizajn/portret/profile-providni.webp`,
+  `portret-providni.py`), ako se odluka promeni.
 - Footer uzima akcenat svetle teme samo kada je aktivna svetla tema. U tamnoj temi koristi svoj
   tamni akcenat, isti kao hero.
 
 ## Posledice
 
 - Pozitivno: klijent može da kopira adresu bez mejl klijenta, a poruka odmah kaže o kom paketu
-  je reč. Portret i dugmad su usklađeni sa temom.
-- Negativno: rub kose i ramena dolazi iz automatskog izreza slike niske rezolucije i vidljiviji
-  je na tamnoj pozadini nego na svetloj. Pravo rešenje je i dalje novo fotografisanje.
+  je reč. Dugme u footeru je iste boje kao u hero-u u obe teme.
+- Negativno: u tamnoj temi portret ostaje najsvetlija površina u hero-u.
 - Otvoreno: pravi imejl i LinkedIn URL čekaju Aleksandrove podatke.
