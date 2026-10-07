@@ -1,6 +1,11 @@
 export default {
   meta: {
-    title: 'Aleksandar Radosavljević'
+    title: 'Aleksandar Radosavljević',
+    // Shown when the link is shared (LinkedIn, Slack) and in search results.
+    shareTitle: 'Aleksandar Radosavljević, frontend engineer for real-time industrial interfaces',
+    description:
+      'Frontend engineer and team lead in Niš, Serbia. I build real-time interfaces for industrial systems: energy grid monitoring, IoT dashboards and operator screens.',
+    imageAlt: 'Aleksandar Radosavljević, frontend engineer for real-time industrial interfaces'
   },
   nav: {
     about: 'About',
