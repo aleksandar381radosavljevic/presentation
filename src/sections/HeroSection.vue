@@ -31,8 +31,8 @@ const { t } = useI18n()
             :class="$style.photo"
             :src="profileUrl"
             :alt="t('heading.photoAlt')"
-            width="436"
-            height="480"
+            width="800"
+            height="880"
           />
           <dl :class="$style.card">
             <div>
