@@ -14,13 +14,16 @@ const DEFAULT_LOCALE: Locale = 'en'
 
 // Each language has its own address (/ and /sr/), so a link always opens the language it was
 // shared in. The address is the only source of the language: no stored choice, no browser guess.
-const pathFor = (code: Locale) => (code === DEFAULT_LOCALE ? '/' : `/${code}/`)
+// The site can live under a subpath (GitHub Pages: /presentation/); BASE_URL always ends with '/'.
+const BASE = import.meta.env.BASE_URL
+const pathFor = (code: Locale) => (code === DEFAULT_LOCALE ? BASE : `${BASE}${code}/`)
 
 const isSupported = (code: string | null | undefined): code is Locale =>
   supportedLocales.some((x) => x.code === code)
 
 const detectLocale = (): Locale => {
-  const segment = location.pathname.split('/')[1]
+  const rest = location.pathname.startsWith(BASE) ? location.pathname.slice(BASE.length) : ''
+  const segment = rest.split('/')[0]
   return isSupported(segment) ? segment : DEFAULT_LOCALE
 }
 
