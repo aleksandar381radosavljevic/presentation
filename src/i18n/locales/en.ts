@@ -218,7 +218,7 @@ export default {
       'Each package has a bounded scope that fits alongside my full-time role and ends with a concrete result.',
     forLabel: 'For',
     deliverableLabel: 'You get',
-    cta: 'Discuss a package',
+    ask: 'Ask about this package',
     items: {
       audit: {
         title: 'Performance audit',
@@ -286,6 +286,8 @@ export default {
       'your timeline'
     ],
     contact: 'Send an email',
+    copy: 'Copy address',
+    copied: 'Address copied',
     linkedin: 'LinkedIn',
     copyright: '© {year} Aleksandar Radosavljević'
   }

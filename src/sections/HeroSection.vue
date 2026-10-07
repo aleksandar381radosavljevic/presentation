@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { Button, MainContainer } from '@/shared/ui'
 import en from '@/i18n/locales/en'
-import profileUrl from '@/assets/images/profile.jpg'
+import profileUrl from '@/assets/images/profile.webp'
 import GridBackdrop from './GridBackdrop.vue'
 
 const { t } = useI18n()
@@ -27,13 +27,15 @@ const { t } = useI18n()
           </div>
         </div>
         <div :class="$style.visual">
-          <img
-            :class="$style.photo"
-            :src="profileUrl"
-            :alt="t('heading.photoAlt')"
-            width="800"
-            height="880"
-          />
+          <div :class="$style.portrait">
+            <img
+              :class="$style.photo"
+              :src="profileUrl"
+              :alt="t('heading.photoAlt')"
+              width="800"
+              height="880"
+            />
+          </div>
           <dl :class="$style.card">
             <div>
               <dt>{{ t('heading.card.locationLabel') }}</dt>
@@ -124,6 +126,16 @@ const { t } = useI18n()
   margin-bottom: var(--space-6);
   justify-self: center;
 }
+/* The photo has a transparent background: the backdrop and its light come from the theme
+   tokens, so the portrait sits in a light frame in the light theme and a dark one in the dark. */
+.portrait {
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 30%, var(--surface-raised) 0%, transparent 70%),
+    var(--surface-sunken);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+}
 .photo {
   display: block;
   width: 100%;
@@ -131,9 +143,7 @@ const { t } = useI18n()
   aspect-ratio: 400 / 440;
   object-fit: cover;
   object-position: 50% 50%;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  box-shadow: var(--shadow-lg);
+  filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.18));
 }
 .card {
   position: absolute;
