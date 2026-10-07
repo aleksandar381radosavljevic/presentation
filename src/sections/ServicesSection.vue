@@ -27,8 +27,13 @@ const OTHERS = [
 </script>
 
 <template>
-  <PageSection id="services" :title="t('services.title')">
-    <p :class="['os-text-body-lg', $style.intro]">{{ t('services.intro') }}</p>
+  <PageSection
+    id="services"
+    :eyebrow="t('services.title')"
+    :title="t('services.heading')"
+    :intro="t('services.intro')"
+    raised
+  >
     <ul :class="[$style.list, $style.featured]">
       <Card v-for="service in FEATURED" :key="service.key" as="li">
         <div :class="$style.service">

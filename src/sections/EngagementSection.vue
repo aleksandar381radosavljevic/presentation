@@ -22,8 +22,12 @@ const OFFERS = [
 </script>
 
 <template>
-  <PageSection id="engagement" :title="t('engagement.title')">
-    <p :class="['os-text-body-lg', $style.intro]">{{ t('engagement.intro') }}</p>
+  <PageSection
+    id="engagement"
+    :eyebrow="t('engagement.title')"
+    :title="t('engagement.heading')"
+    :intro="t('engagement.intro')"
+  >
     <GridLayout as="ul" :columns="{ base: 1, md: 2 }" :class="$style.list">
       <Card v-for="offer in OFFERS" :key="offer.key" as="li" :class="$style.card">
         <div :class="$style.offer">
@@ -51,11 +55,6 @@ const OFFERS = [
 </template>
 
 <style module>
-.intro {
-  max-width: 60ch;
-  margin: 0;
-  color: var(--ink-muted);
-}
 .list {
   margin: 0;
   padding: 0;

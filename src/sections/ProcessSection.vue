@@ -17,8 +17,13 @@ const STEP_PACKAGES: (keyof typeof en.engagement.items)[][] = [
 </script>
 
 <template>
-  <PageSection id="process" :title="t('how.title')">
-    <p :class="['os-text-body-lg', $style.intro]">{{ t('how.intro') }}</p>
+  <PageSection
+    id="process"
+    :eyebrow="t('how.title')"
+    :title="t('how.heading')"
+    :intro="t('how.intro')"
+    raised
+  >
     <ol :class="$style.steps">
       <li v-for="(_, i) in en.how.steps" :key="i" :class="$style.step">
         <span :class="$style.number" aria-hidden="true">{{ stepNumber(i) }}</span>
@@ -45,10 +50,6 @@ const STEP_PACKAGES: (keyof typeof en.engagement.items)[][] = [
 </template>
 
 <style module>
-.intro {
-  max-width: 60ch;
-  color: var(--ink-muted);
-}
 .steps {
   margin: 0;
   padding: 0;

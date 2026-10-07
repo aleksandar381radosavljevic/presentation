@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { onBeforeUnmount, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { Badge, Card } from '@/shared/ui'
+import { ChevronDown } from '@lucide/vue'
+import { Badge, Card, Icon } from '@/shared/ui'
 import PageSection from './PageSection.vue'
 import GridDiagram from './diagrams/GridDiagram.vue'
 import PipelineDiagram from './diagrams/PipelineDiagram.vue'
@@ -25,6 +27,14 @@ const MORE = [
 ] as const
 // Built on his own time, shown apart from the work done for clients.
 const PERSONAL = [{ key: 'pushInstructions', stack: ['.NET', 'React', 'PWA', 'Web Push'] }] as const
+// On phones the case-study text and the compact list entries are a tap away, so the page stays
+// shorter; from 768px everything is shown.
+const wideQuery = matchMedia('(min-width: 768px)')
+const wide = ref(wideQuery.matches)
+const onWideChange = (e: MediaQueryListEvent) => (wide.value = e.matches)
+wideQuery.addEventListener('change', onWideChange)
+onBeforeUnmount(() => wideQuery.removeEventListener('change', onWideChange))
+
 const LISTS = [
   { title: 'projects.moreTitle', items: MORE },
   { title: 'projects.personalTitle', items: PERSONAL }
@@ -32,9 +42,12 @@ const LISTS = [
 </script>
 
 <template>
-  <PageSection id="projects" :title="t('projects.title')">
-    <p :class="['os-text-body-lg', $style.intro]">{{ t('projects.intro') }}</p>
-
+  <PageSection
+    id="projects"
+    :eyebrow="t('projects.title')"
+    :title="t('projects.heading')"
+    :intro="t('projects.intro')"
+  >
     <ul :class="$style.featuredList">
       <Card
         v-for="project in FEATURED"
@@ -49,12 +62,18 @@ const LISTS = [
               <strong>{{ t(`projects.featured.${project.key}.figure.value`) }}</strong>
               <span>{{ t(`projects.featured.${project.key}.figure.label`) }}</span>
             </p>
-            <dl :class="$style.parts">
-              <div v-for="part in CASE_PARTS" :key="part">
-                <dt class="os-text-label">{{ t(`projects.labels.${part}`) }}</dt>
-                <dd>{{ t(`projects.featured.${project.key}.${part}`) }}</dd>
-              </div>
-            </dl>
+            <component :is="wide ? 'div' : 'details'" :class="!wide && $style.collapsible">
+              <summary v-if="!wide" :class="[$style.summary, $style.readMore]">
+                {{ t('projects.readCase') }}
+                <Icon :icon="ChevronDown" :size="20" :class="$style.chevron" />
+              </summary>
+              <dl :class="$style.parts">
+                <div v-for="part in CASE_PARTS" :key="part">
+                  <dt class="os-text-label">{{ t(`projects.labels.${part}`) }}</dt>
+                  <dd>{{ t(`projects.featured.${project.key}.${part}`) }}</dd>
+                </div>
+              </dl>
+            </component>
             <ul :class="$style.stack" :aria-label="t('projects.stackLabel')">
               <li v-for="tech in project.stack" :key="tech">
                 <Badge>{{ tech }}</Badge>
@@ -72,25 +91,33 @@ const LISTS = [
     <template v-for="group in LISTS" :key="group.title">
       <h3 class="os-text-h3">{{ t(group.title) }}</h3>
       <ul :class="$style.compactList">
-        <li v-for="project in group.items" :key="project.key" :class="$style.row">
-          <div>
-            <h4 :class="$style.rowTitle">{{ t(`projects.items.${project.key}.title`) }}</h4>
-            <p :class="['os-text-caption', $style.muted]">
-              {{ t(`projects.items.${project.key}.meta`) }}
-            </p>
-          </div>
-          <div>
-            <p :class="$style.text">{{ t(`projects.items.${project.key}.text`) }}</p>
-            <ul
-              v-if="project.stack.length"
-              :class="$style.stack"
-              :aria-label="t('projects.stackLabel')"
-            >
-              <li v-for="tech in project.stack" :key="tech">
-                <Badge>{{ tech }}</Badge>
-              </li>
-            </ul>
-          </div>
+        <li v-for="project in group.items" :key="project.key">
+          <component
+            :is="wide ? 'div' : 'details'"
+            :class="[$style.row, !wide && $style.collapsible]"
+          >
+            <component :is="wide ? 'div' : 'summary'" :class="$style.summary">
+              <div>
+                <h4 :class="$style.rowTitle">{{ t(`projects.items.${project.key}.title`) }}</h4>
+                <p :class="['os-text-caption', $style.muted]">
+                  {{ t(`projects.items.${project.key}.meta`) }}
+                </p>
+              </div>
+              <Icon v-if="!wide" :icon="ChevronDown" :size="20" :class="$style.chevron" />
+            </component>
+            <div :class="$style.details">
+              <p :class="$style.text">{{ t(`projects.items.${project.key}.text`) }}</p>
+              <ul
+                v-if="project.stack.length"
+                :class="$style.stack"
+                :aria-label="t('projects.stackLabel')"
+              >
+                <li v-for="tech in project.stack" :key="tech">
+                  <Badge>{{ tech }}</Badge>
+                </li>
+              </ul>
+            </div>
+          </component>
         </li>
       </ul>
     </template>
@@ -98,11 +125,6 @@ const LISTS = [
 </template>
 
 <style module>
-.intro {
-  max-width: 60ch;
-  margin: 0;
-  color: var(--ink-muted);
-}
 .featuredList {
   display: flex;
   flex-direction: column;
@@ -148,7 +170,9 @@ const LISTS = [
   margin: 0;
   color: var(--ink-muted);
 }
+/* On phones the illustration comes first, next to the key number, before the four blocks of text. */
 .visual {
+  order: -1;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -171,6 +195,53 @@ const LISTS = [
   gap: var(--space-2);
   padding: var(--space-5) 0;
   border-bottom: 1px solid var(--line);
+}
+.summary {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.collapsible .summary {
+  list-style: none;
+  cursor: pointer;
+}
+.collapsible .summary::-webkit-details-marker {
+  display: none;
+}
+.collapsible .summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+.chevron {
+  flex: none;
+  margin-top: 2px;
+  color: var(--ink-muted);
+  transition: transform 150ms ease;
+}
+.collapsible[open] .chevron {
+  transform: rotate(180deg);
+}
+.readMore {
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+.readMore .chevron {
+  color: inherit;
+}
+.collapsible[open] .parts {
+  margin-top: var(--space-4);
+}
+.collapsible[open] .details {
+  margin-top: var(--space-2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .chevron {
+    transition: none;
+  }
 }
 .rowTitle {
   margin: 0;
@@ -197,6 +268,9 @@ const LISTS = [
   .caseStudy {
     grid-template-columns: 1.2fr 1fr;
     align-items: start;
+  }
+  .visual {
+    order: 0;
   }
   .row {
     grid-template-columns: 1fr 1.6fr;

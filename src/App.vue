@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { MainContainer } from '@/shared/ui'
 import SiteHeader from './sections/SiteHeader.vue'
 import HeroSection from './sections/HeroSection.vue'
 import AboutSection from './sections/AboutSection.vue'
@@ -15,14 +14,12 @@ import SiteFooter from './sections/SiteFooter.vue'
   <SiteHeader />
   <main id="main-content" tabindex="-1" :class="$style.main">
     <HeroSection />
-    <MainContainer as="div" :gap="{ base: 12, lg: 16 }" :padding-y="{ base: 12, lg: 16 }">
-      <AboutSection />
-      <ServicesSection />
-      <ProjectsSection />
-      <ProcessSection />
-      <EngagementSection />
-      <ExperienceSection />
-    </MainContainer>
+    <AboutSection />
+    <ServicesSection />
+    <ProjectsSection />
+    <ProcessSection />
+    <EngagementSection />
+    <ExperienceSection />
   </main>
   <SiteFooter />
 </template>

@@ -9,8 +9,13 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <PageSection id="experience" :title="t('experience.title')">
-    <p :class="['os-text-body-lg', $style.intro]">{{ t('experience.intro') }}</p>
+  <PageSection
+    id="experience"
+    :eyebrow="t('experience.title')"
+    :title="t('experience.heading')"
+    :intro="t('experience.intro')"
+    raised
+  >
     <GridLayout :columns="{ base: 1, md: 12 }">
       <GridItem :col-span="{ base: 'full', md: 7 }">
         <Card :title="t('experience.company')">
@@ -49,10 +54,6 @@ const { t } = useI18n()
 </template>
 
 <style module>
-.intro {
-  max-width: 60ch;
-  color: var(--ink-muted);
-}
 .roles {
   display: flex;
   flex-direction: column;
