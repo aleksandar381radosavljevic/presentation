@@ -1,7 +1,7 @@
 import type { Plugin } from 'vite'
-import en from '../src/i18n/locales/en'
-import sr from '../src/i18n/locales/sr'
-import { site } from '../src/config/site'
+import en from '../src/i18n/locales/en.ts'
+import sr from '../src/i18n/locales/sr.ts'
+import { site } from '../src/config/site.ts'
 
 /**
  * One HTML page per language: / in English and /sr/ in Serbian. Each page carries its own

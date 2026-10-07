@@ -80,7 +80,8 @@ const { t } = useI18n()
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, var(--surface), transparent 30%),
+  background:
+    linear-gradient(0deg, var(--surface), transparent 30%),
     linear-gradient(
       180deg,
       var(--surface) 35%,
@@ -196,7 +197,8 @@ const { t } = useI18n()
     gap: var(--space-16);
   }
   .backdrop::after {
-    background: linear-gradient(0deg, var(--surface), transparent 25%),
+    background:
+      linear-gradient(0deg, var(--surface), transparent 25%),
       linear-gradient(
         90deg,
         var(--surface) 30%,

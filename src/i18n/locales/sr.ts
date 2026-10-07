@@ -1,4 +1,4 @@
-import type en from './en'
+import type en from './en.ts'
 
 const sr: typeof en = {
   meta: {
