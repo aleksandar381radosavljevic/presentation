@@ -8,6 +8,7 @@ const { t } = useI18n()
 
 <template>
   <PageSection id="about" :title="t('about.title')">
+    <p :class="['os-text-h2', $style.lead]">{{ t('about.lead') }}</p>
     <p
       v-for="(_, i) in en.about.paragraphs"
       :key="i"
@@ -19,6 +20,12 @@ const { t } = useI18n()
 </template>
 
 <style module>
+/* The specialization is the point of the section, so it reads as a statement, not as body text. */
+.lead {
+  max-width: 30ch;
+  margin: 0;
+  color: var(--ink);
+}
 .paragraph {
   max-width: 65ch;
   margin: 0;

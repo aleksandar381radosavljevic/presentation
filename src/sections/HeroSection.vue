@@ -14,7 +14,6 @@ const { t } = useI18n()
     <MainContainer as="div" :padding-y="{ base: 12, lg: 16 }">
       <div :class="$style.inner">
         <div :class="$style.text">
-          <p :class="['os-text-label', $style.greeting]">{{ t('heading.greeting') }}</p>
           <h1 id="hero-title" :class="['os-text-display', $style.name]">
             {{ t('heading.name') }}
           </h1>
@@ -99,16 +98,14 @@ const { t } = useI18n()
   flex-direction: column;
   gap: var(--space-4);
 }
-.greeting {
-  color: var(--accent-ink);
-}
 .name {
   margin: 0;
   font-size: clamp(36px, 6vw, 56px);
   line-height: 1.05;
 }
 .role {
-  color: var(--ink-muted);
+  max-width: 28ch;
+  color: var(--accent-ink);
 }
 .pitch {
   max-width: 46ch;
@@ -120,9 +117,10 @@ const { t } = useI18n()
   gap: var(--space-3);
   margin-top: var(--space-4);
 }
+/* Smaller on phones, so the portrait does not take a whole screen before the work. */
 .visual {
   position: relative;
-  width: min(100%, 400px);
+  width: min(100%, 280px);
   justify-self: center;
 }
 .photo {
@@ -205,6 +203,7 @@ const { t } = useI18n()
       );
   }
   .visual {
+    width: min(100%, 400px);
     justify-self: end;
   }
   .card {

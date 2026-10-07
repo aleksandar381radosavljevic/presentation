@@ -5,11 +5,10 @@ export default {
   nav: {
     about: 'About',
     services: 'Services',
-    process: 'How I work',
     projects: 'Projects',
+    process: 'How I work',
     engagement: 'Work together',
-    experience: 'Experience',
-    technologies: 'Technologies'
+    experience: 'Experience'
   },
   ui: {
     skipToContent: 'Skip to content',
@@ -24,11 +23,10 @@ export default {
   },
   heading: {
     photoAlt: 'Portrait of Aleksandar Radosavljević',
-    greeting: "Hi, I'm",
     name: 'Aleksandar Radosavljević',
-    role: 'Software Engineer & Frontend Team Lead',
+    role: 'Frontend engineer for real-time industrial interfaces',
     pitch:
-      'I build web applications from the first requirements workshop to delivery, and I lead a frontend team.',
+      'I lead a frontend team at COMING – Computer Engineering in Niš and stay involved from the first requirements workshop to delivery.',
     factsLabel: 'Key figures',
     card: {
       locationLabel: 'Based in',
@@ -37,58 +35,155 @@ export default {
       languages: 'Serbian, English'
     },
     facts: [
+      { value: '10,000+', label: 'live elements on one energy grid screen, built with my team' },
+      { value: '50 ms', label: 'between live readings on IoT dashboards I architected' },
       { value: '7+ years', label: 'building production software' },
-      { value: 'Since 2022', label: 'leading a frontend team' },
-      { value: 'BSc', label: 'Computer Science, University of Niš' },
-      { value: 'MCSA', label: 'Microsoft certified: Web Applications' }
+      { value: 'Since 2022', label: 'leading a frontend team' }
     ],
     discussProject: 'Discuss a project',
     seeProjects: 'See projects'
   },
   about: {
     title: 'About me',
+    lead: 'I specialize in real-time interfaces for industrial systems.',
     paragraphs: [
-      'I specialize in real-time interfaces for industrial systems. Most of my work is on interfaces where the data never stops: monitoring an energy grid in real time and live readings from measuring devices. I also take part in the work before the code: I meet the people who will use the software, ask questions and write down exactly what it needs to do.'
+      'Most of my work is on interfaces where the data never stops: monitoring an energy grid in real time and live readings from measuring devices. I also take part in the work before the code: I meet the people who will use the software, ask questions and write down exactly what it needs to do.'
     ]
   },
   services: {
     title: 'What I do',
-    intro: 'Where I can help, from the first workshop to the screen in production.',
+    intro: 'The areas I work in. Concrete ways to start are under Work together.',
     items: {
-      webApps: {
-        title: 'Web applications',
-        text: 'Business applications in React, Vue and TypeScript, from standard admin panels and forms to large single-page apps, with .NET and SQL Server on the backend when the project needs it.'
-      },
       hmi: {
         title: 'Web-based HMI',
-        text: 'Human-machine interfaces that run in the browser: overview and detail screens, alarms and states an operator reads at a glance, a design system that keeps every screen consistent, and rendering that holds up under live data.'
+        text: 'Overview and detail screens, alarms and states an operator reads at a glance, consistent across every screen and fast under live data.'
       },
       realtime: {
         title: 'Real-time data visualization',
-        text: 'Live charts and monitoring dashboards that stay fast under a constant stream of device data, with data intake kept separate from rendering.'
-      },
-      modernization: {
-        title: 'Legacy modernization',
-        text: 'Step-by-step migration of older multi-page applications to a modern architecture, without freezing the development of new features, plus a component library in Storybook that your team keeps using.'
+        text: 'Live charts and monitoring dashboards that stay responsive under a constant stream of device data.'
       },
       leadership: {
         title: 'Analysis and technical leadership',
-        text: 'Requirements workshops, functional specifications, technical documentation and leading the development team through delivery.'
+        text: 'Requirements workshops, functional specifications, technical documentation and leading a team through delivery.'
+      },
+      modernization: {
+        title: 'Legacy modernization',
+        text: 'Step-by-step migration of older multi-page applications without freezing new features, with a shared component library.'
+      },
+      webApps: {
+        title: 'Web applications',
+        text: 'Business applications in React, Vue and TypeScript, with .NET and SQL Server on the backend when the project needs it.'
+      }
+    },
+    principlesTitle: 'Principles for operator screens',
+    principlesIntro: 'Four rules every HMI screen I work on follows.',
+    principles: [
+      {
+        title: 'Show what is abnormal; keep the normal calm.',
+        text: 'Normal states use quiet colors, so a deviation is the first thing the eye finds.'
+      },
+      {
+        title: 'Alarms that matter never drown in noise.',
+        text: 'Critical alarms stand out even when many arrive at once.'
+      },
+      {
+        title: 'Connection status and data age are always visible.',
+        text: 'An operator always knows whether a value on screen is live or stale.'
+      },
+      {
+        title: 'The screen stays responsive, no matter how fast the data arrives.',
+        text: 'Receiving data is kept apart from drawing it, so a burst of updates never freezes the controls.'
+      }
+    ]
+  },
+  projects: {
+    title: 'Selected projects',
+    intro:
+      'These projects were built with my team at COMING – Computer Engineering. Client names stay confidential; for each one I describe the problem and my role.',
+    stackLabel: 'Technologies',
+    labels: {
+      problem: 'Problem',
+      constraint: 'Constraint',
+      role: 'My role',
+      result: 'Result'
+    },
+    illustrationNote: "Illustration with made-up data, not the client's screen.",
+    moreTitle: 'More projects',
+    personalTitle: 'Personal projects',
+    featured: {
+      gridVisualization: {
+        title: 'Real-time energy grid visualization',
+        meta: 'Energy · Web HMI · Frontend architecture',
+        figure: { value: '10,000+', label: 'interactive elements on one screen' },
+        problem:
+          'Operators watch an energy grid with more than 10,000 elements and need to see every change as it happens.',
+        constraint:
+          'The server pushes live updates over SignalR, and the screen must stay smooth while operators zoom, pan and select elements.',
+        role: 'I designed the frontend architecture (how rendering, live updates and application state fit together, and which libraries to use) and was one of the developers who built it.',
+        result:
+          'A canvas-based web HMI, built as a progressive web app, that stays smooth under live updates and has separate edit and preview modes.',
+        diagram: {
+          live: 'Live over SignalR',
+          alarm: 'Alarm',
+          stale: 'Stale data'
+        }
+      },
+      liveDashboards: {
+        title: 'Live dashboards for measurement devices',
+        meta: 'IoT · Frontend architecture',
+        figure: { value: '50 ms', label: 'between new readings' },
+        problem:
+          'Small measuring devices send timestamped readings, and people need to follow them as live charts.',
+        constraint:
+          'A new measurement arrives every 50 ms. Redrawing the screen for every message would freeze the interface.',
+        role: 'I designed the frontend architecture and was one of the developers.',
+        result:
+          'Receiving data is kept separate from re-rendering the screen, so the D3.js charts update live and the interface stays responsive.',
+        diagram: {
+          devices: 'Devices',
+          interval: 'every 50 ms',
+          receive: 'Receiving',
+          draw: 'Drawing',
+          charts: 'Live charts',
+          separate: 'kept separate'
+        }
+      }
+    },
+    items: {
+      legacyMigration: {
+        title: 'Legacy application migration',
+        meta: 'Enterprise · Frontend team lead · 2024 – present',
+        text: 'Moving a jQuery application of around 50 pages to a modern single-page app while new features keep shipping, with a Storybook catalog and shared packages from an Nx monorepo.'
+      },
+      digitalization: {
+        title: 'Business process digitalization',
+        meta: 'Enterprise client · Lead of a team of three · ongoing',
+        text: "Digitalizing a client's business processes. With a business analyst I ran the requirements meetings and wrote the functional specification."
+      },
+      notificationEngine: {
+        title: 'Notification engine',
+        meta: 'Platform service · Frontend team lead · 2022 – 2023',
+        text: 'A plug-and-play service where every user chooses which notifications they get and on which channel: SMS, email or push.'
+      },
+      scannerService: {
+        title: 'Scanner access from the browser',
+        meta: 'Document scanning · Developer, then maintainer · 2021',
+        text: 'An extension of the open-source NAPS2 library, built with the senior colleague who designed it, that lets a web app drive WIA and TWAIN scanners through a Windows service.'
+      },
+      pushInstructions: {
+        title: 'Work instructions over web push',
+        meta: 'Personal project · PWA',
+        text: "A .NET backend sends work instructions that reach an employee's phone as web push notifications through a React progressive web app."
       }
     }
   },
   how: {
     title: 'How I work',
     intro:
-      'Good software starts long before the first line of code. Each step ends with something concrete you can review.',
+      'This is the process I follow on projects at COMING. Each step ends with something concrete to review. The first three steps are also what I offer as separate packages.',
     deliverableLabel: 'You get:',
-    principlesTitle: 'Principles for operator screens',
-    principles: [
-      'Show what is abnormal; keep the normal calm.',
-      'Alarms that matter never drown in noise.',
-      'Connection status and data age are always visible.',
-      'The screen stays responsive, no matter how fast the data arrives.'
-    ],
+    packageLabel: 'Package:',
+    teamOnly: 'On projects with my team at COMING',
     steps: [
       {
         title: 'Understanding your business',
@@ -101,9 +196,9 @@ export default {
         deliverable: 'a specification to approve before development starts.'
       },
       {
-        title: 'Design',
-        text: 'The specification becomes application mockups, followed by technical documentation and the database design.',
-        deliverable: 'mockups to review and a documented architecture.'
+        title: 'Architecture',
+        text: 'From the specification I write the technical documentation and design the architecture and the database.',
+        deliverable: 'a documented architecture and database design to review.'
       },
       {
         title: 'Development',
@@ -112,74 +207,42 @@ export default {
       },
       {
         title: 'Delivery and support',
-        text: 'The application ships as a Docker image through the CI/CD pipeline, with error logging and single sign-on in place, and I stay involved after launch.',
+        text: 'The application ships as a Docker image through the CI/CD pipeline, with error logging and single sign-on in place, and the team stays involved after launch.',
         deliverable: 'a system that is deployed, monitored and maintained.'
       }
     ]
   },
-  projects: {
-    title: 'Selected projects',
-    intro:
-      'These projects were built with my team at COMING – Computer Engineering. Client names stay confidential; for each one I describe the problem and my role.',
-    stackLabel: 'Technologies',
-    personalTitle: 'Personal projects',
-    items: {
-      gridVisualization: {
-        title: 'Real-time energy grid visualization',
-        meta: 'Energy · Web HMI · Frontend architecture',
-        text: 'I designed the frontend architecture and was one of the developers who built it: how rendering, live updates and application state fit together, and which components and libraries to use. The canvas-based web HMI monitors an energy grid in real time. More than 10,000 interactive elements stay smooth while the server pushes live updates over SignalR, with zoom, pan, element selection and separate edit and preview modes. Built as a progressive web app.'
-      },
-      liveDashboards: {
-        title: 'Live dashboards for measurement devices',
-        meta: 'IoT · Frontend architecture',
-        text: 'I designed the frontend architecture and was one of the developers. The React application turns timestamped readings from small measuring devices into live D3.js charts. New measurements arrive every 50 ms, so the architecture keeps receiving data separate from re-rendering the screen and the interface stays responsive.'
-      },
-      legacyMigration: {
-        title: 'Legacy application migration',
-        meta: 'Enterprise · Frontend team lead · 2024 – present',
-        text: 'I lead the frontend team that is migrating a large application of around 50 pages, built on jQuery and custom UI libraries, into a modern single-page application, in parallel with the development of new features. The work includes a component catalog in Storybook and shared libraries published as packages from an Nx monorepo, with sign-in through Keycloak.'
-      },
-      digitalization: {
-        title: 'Business process digitalization',
-        meta: 'Enterprise client · Development team lead · ongoing',
-        text: "I lead the development team of three (backend, frontend and QA) that is digitalizing a client's existing business processes, from the first workshops onward. Together with a business analyst I ran the requirements meetings, documented the decisions and wrote the functional specification, and the team built the application mockups. Technical documentation and the database design are next."
-      },
-      notificationEngine: {
-        title: 'Notification engine',
-        meta: 'Platform service · Frontend team lead · 2022 – 2023',
-        text: 'I led the frontend team on a plug-and-play service that attaches to an application and accepts its notifications. Every user decides which notifications they want and on which channels: SMS, email or push notifications.'
-      },
-      pushInstructions: {
-        title: 'Work instructions over web push',
-        meta: 'Personal project · PWA',
-        text: "I built this project on my own to show a progressive web app with web push in practice. A .NET backend sends work instructions, and they reach an employee's phone as push notifications through the React app."
-      },
-      scannerService: {
-        title: 'Scanner access from the browser',
-        meta: 'Document scanning · Developer, then maintainer · 2021',
-        text: 'Together with the senior colleague who designed it, I built an extension of NAPS2, the open-source scanning library, that lets a web application drive document scanners through a Windows service. It works with both WIA and TWAIN scanner drivers, and I later took over its maintenance.'
-      }
-    }
-  },
   engagement: {
     title: 'Ways to work together',
-    intro: 'Each engagement has a clear scope and ends with a concrete result.',
+    intro:
+      'Each package has a bounded scope that fits alongside my full-time role and ends with a concrete result.',
+    forLabel: 'For',
+    deliverableLabel: 'You get',
+    cta: 'Discuss a package',
     items: {
       audit: {
         title: 'Performance audit',
-        text: 'Your real-time screen stutters or freezes under load. I measure where the time goes and deliver a report with a prioritized fix plan.'
+        for: 'Teams whose real-time screen stutters or freezes under load.',
+        text: 'I measure where the time goes in your existing application.',
+        deliverable: 'A report with measurements and a prioritized fix plan.'
       },
       discovery: {
         title: 'Discovery and specification',
-        text: 'A paid workshop that turns your idea into a functional specification, so development starts with a clear scope and estimate.'
-      },
-      migrationPlan: {
-        title: 'Migration plan',
-        text: 'I assess your aging operator or back-office interface and deliver a step-by-step migration plan, plus the foundation of a component library your team builds on.'
+        for: 'Companies with an idea or a process to digitalize.',
+        text: 'A paid workshop with your team, followed by the written specification.',
+        deliverable: 'A functional specification that development can estimate and start from.'
       },
       architectureReview: {
         title: 'Architecture review',
-        text: 'For software companies and system integrators: I review the frontend architecture of your real-time application, or help your team design one, so it holds up under live data.'
+        for: 'Software companies and system integrators building real-time applications.',
+        text: 'I review the frontend architecture of your application, or help your team design one.',
+        deliverable: 'Written findings and recommendations so it holds up under live data.'
+      },
+      migrationPlan: {
+        title: 'Migration plan',
+        for: 'Teams with an aging operator or back-office interface.',
+        text: 'I assess the current application and how it is built.',
+        deliverable: 'A step-by-step migration plan and the foundation of a component library.'
       }
     }
   },
@@ -189,9 +252,12 @@ export default {
       'I started on the backend with .NET and SQL Server, moved to the frontend with React and Vue, and today I lead a frontend team while staying involved from requirements to delivery.',
     company: 'COMING – Computer Engineering, Niš',
     roles: [
-      { title: 'Frontend Team Lead', period: 'May 2022 – present' },
-      { title: 'Software Engineer', period: 'July 2019 – present' },
-      { title: 'Intern', period: 'April – June 2019' }
+      {
+        title: 'Software Engineer and Frontend Team Lead',
+        period: 'July 2019 – present',
+        note: 'Leading the frontend team since May 2022'
+      },
+      { title: 'Intern', period: 'April – June 2019', note: '' }
     ],
     educationTitle: 'Education',
     education: 'BSc in Computer Science, Faculty of Electronic Engineering, University of Niš',
@@ -202,6 +268,7 @@ export default {
   },
   technologies: {
     title: 'Technologies',
+    keyNote: 'Highlighted: what I use most.',
     groups: {
       frontend: 'Frontend',
       visualization: 'Visualization',
@@ -212,8 +279,14 @@ export default {
   },
   footer: {
     title: 'Have a project that deserves careful analysis and a solid build?',
-    text: 'Tell me about it.',
+    text: 'Tell me about it. A few lines are enough:',
+    checklist: [
+      'what you are building and for whom',
+      'where the project is today and what you need from me',
+      'your timeline'
+    ],
     contact: 'Send an email',
+    linkedin: 'LinkedIn',
     copyright: '© {year} Aleksandar Radosavljević'
   }
 }
