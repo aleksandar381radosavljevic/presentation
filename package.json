@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
-    "tokens": "node scripts/build-tokens.ts",
+    "tokens": "node scripts/build-tokens.ts && prettier --write src/shared/ui/styles/tokens.css",
     "lint": "eslint . --fix",
     "lint:check": "eslint .",
     "format": "prettier --write src/",
