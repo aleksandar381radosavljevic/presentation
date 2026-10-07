@@ -31,8 +31,8 @@ const { t } = useI18n()
             :class="$style.photo"
             :src="profileUrl"
             :alt="t('heading.photoAlt')"
-            width="1296"
-            height="1296"
+            width="800"
+            height="880"
           />
           <dl :class="$style.card">
             <div>
@@ -121,6 +121,7 @@ const { t } = useI18n()
 .visual {
   position: relative;
   width: min(100%, 280px);
+  margin-bottom: var(--space-6);
   justify-self: center;
 }
 .photo {
@@ -129,14 +130,15 @@ const { t } = useI18n()
   height: auto;
   aspect-ratio: 400 / 440;
   object-fit: cover;
-  object-position: 50% 30%;
+  object-position: 50% 50%;
   border: 1px solid var(--line);
   border-radius: 16px;
   box-shadow: var(--shadow-lg);
 }
 .card {
   position: absolute;
-  bottom: var(--space-8);
+  /* Hangs below the photo, so it never covers the face. */
+  bottom: calc(-1 * var(--space-6));
   left: calc(-1 * var(--space-4));
   display: flex;
   gap: var(--space-6);
