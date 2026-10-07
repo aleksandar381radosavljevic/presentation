@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { CircleCheck } from '@lucide/vue'
-import { Icon } from '@/shared/ui'
+import { Badge } from '@/shared/ui'
 import en from '@/i18n/locales/en'
 import PageSection from './PageSection.vue'
 
 const { t } = useI18n()
 const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
+// Which package under Work together covers each step; the later steps happen only inside his team.
+const STEP_PACKAGES: (keyof typeof en.engagement.items)[][] = [
+  ['discovery'],
+  ['discovery'],
+  ['architectureReview', 'migrationPlan'],
+  [],
+  []
+]
 </script>
 
 <template>
@@ -18,6 +25,15 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
         <div :class="$style.body">
           <h3 class="os-text-h3">{{ t(`how.steps.${i}.title`) }}</h3>
           <p :class="$style.text">{{ t(`how.steps.${i}.text`) }}</p>
+          <p :class="['os-text-caption', $style.scope]">
+            <template v-if="STEP_PACKAGES[i].length">
+              {{ t('how.packageLabel') }}
+              <a v-for="key in STEP_PACKAGES[i]" :key="key" href="#engagement">
+                <Badge tone="accent">{{ t(`engagement.items.${key}.title`) }}</Badge>
+              </a>
+            </template>
+            <template v-else>{{ t('how.teamOnly') }}</template>
+          </p>
         </div>
         <p :class="$style.deliverable">
           <strong>{{ t('how.deliverableLabel') }}</strong>
@@ -25,13 +41,6 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
         </p>
       </li>
     </ol>
-    <h3 class="os-text-h3">{{ t('how.principlesTitle') }}</h3>
-    <ul :class="$style.principles">
-      <li v-for="(_, i) in en.how.principles" :key="i" :class="$style.principle">
-        <Icon :icon="CircleCheck" :size="20" color="var(--accent-ink)" />
-        <span>{{ t(`how.principles.${i}`) }}</span>
-      </li>
-    </ul>
   </PageSection>
 </template>
 
@@ -109,17 +118,16 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
     margin-top: var(--space-1);
   }
 }
-.principles {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-3) var(--space-6);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.principle {
+/* Ties each step to the package that covers it, so the process reads as an offer, not a whole build. */
+.scope {
   display: flex;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-2);
+  margin: var(--space-1) 0 0;
+  color: var(--ink-muted);
+}
+.scope a {
+  text-decoration: none;
 }
 </style>

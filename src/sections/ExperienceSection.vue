@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { Card, GridItem, GridLayout } from '@/shared/ui'
 import en from '@/i18n/locales/en'
 import PageSection from './PageSection.vue'
+import TechnologiesList from './TechnologiesList.vue'
 
 const { t } = useI18n()
 </script>
@@ -18,6 +19,9 @@ const { t } = useI18n()
               <strong>{{ t(`experience.roles.${i}.title`) }}</strong>
               <span :class="['os-text-caption', $style.muted]">
                 {{ t(`experience.roles.${i}.period`) }}
+              </span>
+              <span v-if="en.experience.roles[i].note" :class="['os-text-body-sm', $style.muted]">
+                {{ t(`experience.roles.${i}.note`) }}
               </span>
             </li>
           </ol>
@@ -40,6 +44,7 @@ const { t } = useI18n()
         </Card>
       </GridItem>
     </GridLayout>
+    <TechnologiesList />
   </PageSection>
 </template>
 

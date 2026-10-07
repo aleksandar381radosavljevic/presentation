@@ -7,7 +7,6 @@ import {
   Icon,
   Logo,
   Navbar,
-  Select,
   useTheme,
   type MenuItem,
   type ThemeMode
@@ -15,15 +14,7 @@ import {
 import { currentLocale, setLocale, supportedLocales } from '@/i18n'
 import { useActiveSection } from './useActiveSection'
 
-const SECTIONS = [
-  'about',
-  'services',
-  'process',
-  'projects',
-  'engagement',
-  'experience',
-  'technologies'
-] as const
+const SECTIONS = ['about', 'services', 'projects', 'process', 'engagement', 'experience'] as const
 
 const { t } = useI18n()
 const { mode, setTheme } = useTheme()
@@ -32,8 +23,6 @@ const activeSection = useActiveSection([...SECTIONS])
 const navItems = computed(() =>
   SECTIONS.map((id) => ({ id, label: t(`nav.${id}`), href: `#${id}` }))
 )
-const languageOptions = supportedLocales.map((x) => ({ value: x.code, label: x.label }))
-const language = computed({ get: () => currentLocale.value, set: setLocale })
 
 const THEME_ICONS = { light: Sun, dark: Moon, system: Monitor }
 const themeItems = computed<MenuItem[]>(() =>
@@ -63,14 +52,20 @@ const themeItems = computed<MenuItem[]>(() =>
       </a>
     </template>
     <template #actions>
-      <Select
-        v-model="language"
-        :class="$style.language"
-        :label="t('ui.language')"
-        hide-label
-        size="sm"
-        :options="languageOptions"
-      />
+      <!-- Two languages fit a compact toggle; each button names its language in full for screen readers. -->
+      <div :class="$style.language" role="group" :aria-label="t('ui.language')">
+        <button
+          v-for="locale in supportedLocales"
+          :key="locale.code"
+          type="button"
+          :lang="locale.code"
+          :aria-label="locale.label"
+          :aria-pressed="currentLocale === locale.code"
+          @click="setLocale(locale.code)"
+        >
+          {{ locale.short }}
+        </button>
+      </div>
       <DropdownMenu :items="themeItems" :label="t('ui.theme')" placement="bottom-end">
         <template #trigger="{ triggerProps }">
           <Icon v-bind="triggerProps" :icon="THEME_ICONS[mode]" :size="20" :label="t('ui.theme')" />
@@ -99,7 +94,32 @@ const themeItems = computed<MenuItem[]>(() =>
   white-space: nowrap;
 }
 .language {
-  width: 120px;
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+.language button {
+  min-width: 36px;
+  height: 28px;
+  padding: 0 var(--space-2);
+  font: 600 13px/1 var(--font-sans);
+  color: var(--ink-muted);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.language button:hover {
+  color: var(--ink);
+}
+.language button[aria-pressed='true'] {
+  color: var(--ink);
+  background: var(--surface-sunken);
+}
+.language button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
 }
 @media (max-width: 479px) {
   .name {

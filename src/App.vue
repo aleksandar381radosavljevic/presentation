@@ -8,7 +8,6 @@ import ProcessSection from './sections/ProcessSection.vue'
 import ProjectsSection from './sections/ProjectsSection.vue'
 import EngagementSection from './sections/EngagementSection.vue'
 import ExperienceSection from './sections/ExperienceSection.vue'
-import TechnologiesSection from './sections/TechnologiesSection.vue'
 import SiteFooter from './sections/SiteFooter.vue'
 </script>
 
@@ -19,11 +18,10 @@ import SiteFooter from './sections/SiteFooter.vue'
     <MainContainer as="div" :gap="{ base: 12, lg: 16 }" :padding-y="{ base: 12, lg: 16 }">
       <AboutSection />
       <ServicesSection />
-      <ProcessSection />
       <ProjectsSection />
+      <ProcessSection />
       <EngagementSection />
       <ExperienceSection />
-      <TechnologiesSection />
     </MainContainer>
   </main>
   <SiteFooter />

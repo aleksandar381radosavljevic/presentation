@@ -4,8 +4,8 @@ import en from './locales/en'
 import sr from './locales/sr'
 
 export const supportedLocales = [
-  { code: 'en', label: 'English' },
-  { code: 'sr', label: 'Српски' }
+  { code: 'en', label: 'English', short: 'EN' },
+  { code: 'sr', label: 'Српски', short: 'Срп' }
 ] as const
 
 export type Locale = (typeof supportedLocales)[number]['code']
