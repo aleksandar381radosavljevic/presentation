@@ -1,7 +1,9 @@
 {
-  "extends": "@tsconfig/node20/tsconfig.json",
+  "extends": "@tsconfig/node22/tsconfig.json",
   "include": [
     "scripts/**/*.ts",
+    "src/i18n/locales/*.ts",
+    "src/config/site.ts",
     "vite.config.*",
     "vitest.config.*",
     "cypress.config.*",
@@ -11,6 +13,7 @@
   "compilerOptions": {
     "composite": true,
     "noEmit": true,
+    "allowImportingTsExtensions": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
 
     "module": "ESNext",

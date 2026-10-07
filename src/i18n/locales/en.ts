@@ -1,6 +1,11 @@
 export default {
   meta: {
-    title: 'Aleksandar Radosavljević'
+    title: 'Aleksandar Radosavljević',
+    // Shown when the link is shared (LinkedIn, Slack) and in search results.
+    shareTitle: 'Aleksandar Radosavljević, frontend engineer for real-time industrial interfaces',
+    description:
+      'Frontend engineer and team lead in Niš, Serbia. I build real-time interfaces for industrial systems: energy grid monitoring, IoT dashboards and operator screens.',
+    imageAlt: 'Aleksandar Radosavljević, frontend engineer for real-time industrial interfaces'
   },
   nav: {
     about: 'About',
@@ -45,13 +50,14 @@ export default {
   },
   about: {
     title: 'About me',
-    lead: 'I specialize in real-time interfaces for industrial systems.',
+    heading: 'I specialize in real-time interfaces for industrial systems.',
     paragraphs: [
       'Most of my work is on interfaces where the data never stops: monitoring an energy grid in real time and live readings from measuring devices. I also take part in the work before the code: I meet the people who will use the software, ask questions and write down exactly what it needs to do.'
     ]
   },
   services: {
     title: 'What I do',
+    heading: 'From operator screens to the analysis behind them.',
     intro: 'The areas I work in. Concrete ways to start are under Work together.',
     items: {
       hmi: {
@@ -98,8 +104,10 @@ export default {
   },
   projects: {
     title: 'Selected projects',
+    heading: 'Real-time screens in production, built with my team.',
     intro:
       'These projects were built with my team at COMING – Computer Engineering. Client names stay confidential; for each one I describe the problem and my role.',
+    readCase: 'Read the case study',
     stackLabel: 'Technologies',
     labels: {
       problem: 'Problem',
@@ -179,8 +187,9 @@ export default {
   },
   how: {
     title: 'How I work',
+    heading: 'Every step ends with something you can review.',
     intro:
-      'This is the process I follow on projects at COMING. Each step ends with something concrete to review. The first three steps are also what I offer as separate packages.',
+      'This is the process I follow on projects at COMING. The first three steps are also what I offer as separate packages.',
     deliverableLabel: 'You get:',
     packageLabel: 'Package:',
     teamOnly: 'On projects with my team at COMING',
@@ -214,11 +223,12 @@ export default {
   },
   engagement: {
     title: 'Ways to work together',
+    heading: 'Start with one package, not a whole project.',
     intro:
       'Each package has a bounded scope that fits alongside my full-time role and ends with a concrete result.',
     forLabel: 'For',
     deliverableLabel: 'You get',
-    cta: 'Discuss a package',
+    ask: 'Ask about this package',
     items: {
       audit: {
         title: 'Performance audit',
@@ -248,6 +258,7 @@ export default {
   },
   experience: {
     title: 'Experience',
+    heading: 'Seven years, from the backend to leading a frontend team.',
     intro:
       'I started on the backend with .NET and SQL Server, moved to the frontend with React and Vue, and today I lead a frontend team while staying involved from requirements to delivery.',
     company: 'COMING – Computer Engineering, Niš',
@@ -286,6 +297,8 @@ export default {
       'your timeline'
     ],
     contact: 'Send an email',
+    copy: 'Copy address',
+    copied: 'Address copied',
     linkedin: 'LinkedIn',
     copyright: '© {year} Aleksandar Radosavljević'
   }

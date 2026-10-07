@@ -2,9 +2,16 @@
 import { useI18n } from 'vue-i18n'
 import { Gauge, Layers, Network, NotebookPen } from '@lucide/vue'
 import { Button, Card, GridLayout, Icon } from '@/shared/ui'
+import { site } from '@/config/site'
 import PageSection from './PageSection.vue'
 
 const { t } = useI18n()
+// Each package opens an email with its name in the subject, so the client does not have to
+// phrase the request and the message says which package it is about.
+const askHref = (key: string) =>
+  site.contactEmail
+    ? `mailto:${site.contactEmail}?subject=${encodeURIComponent(t(`engagement.items.${key}.title`))}`
+    : '#contact'
 // The only list of what a client can buy: who each package is for and what it ends with.
 const OFFERS = [
   { key: 'audit', icon: Gauge },
@@ -15,10 +22,14 @@ const OFFERS = [
 </script>
 
 <template>
-  <PageSection id="engagement" :title="t('engagement.title')">
-    <p :class="['os-text-body-lg', $style.intro]">{{ t('engagement.intro') }}</p>
+  <PageSection
+    id="engagement"
+    :eyebrow="t('engagement.title')"
+    :title="t('engagement.heading')"
+    :intro="t('engagement.intro')"
+  >
     <GridLayout as="ul" :columns="{ base: 1, md: 2 }" :class="$style.list">
-      <Card v-for="offer in OFFERS" :key="offer.key" as="li">
+      <Card v-for="offer in OFFERS" :key="offer.key" as="li" :class="$style.card">
         <div :class="$style.offer">
           <Icon :icon="offer.icon" :size="24" color="var(--accent-ink)" />
           <h3 class="os-text-h3">{{ t(`engagement.items.${offer.key}.title`) }}</h3>
@@ -29,27 +40,37 @@ const OFFERS = [
             <dt class="os-text-label">{{ t('engagement.deliverableLabel') }}</dt>
             <dd>{{ t(`engagement.items.${offer.key}.deliverable`) }}</dd>
           </dl>
+          <div :class="$style.ask">
+            <Button :href="askHref(offer.key)">
+              {{ t('engagement.ask') }}
+              <span :class="$style.visuallyHidden"
+                >: {{ t(`engagement.items.${offer.key}.title`) }}</span
+              >
+            </Button>
+          </div>
         </div>
       </Card>
     </GridLayout>
-    <div>
-      <Button variant="primary" size="lg" href="#contact">{{ t('engagement.cta') }}</Button>
-    </div>
   </PageSection>
 </template>
 
 <style module>
-.intro {
-  max-width: 60ch;
-  margin: 0;
-  color: var(--ink-muted);
-}
 .list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+/* Cards in a row share a height, so the buttons line up at the bottom. */
+.card {
+  display: flex;
+  flex-direction: column;
+}
+.card > div {
+  display: flex;
+  flex: 1;
+}
 .offer {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -71,5 +92,17 @@ const OFFERS = [
 }
 .facts dd {
   margin: 0;
+}
+.ask {
+  margin-top: auto;
+  padding-top: var(--space-3);
+}
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 </style>

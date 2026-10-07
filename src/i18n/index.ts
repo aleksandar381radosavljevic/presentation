@@ -10,25 +10,18 @@ export const supportedLocales = [
 
 export type Locale = (typeof supportedLocales)[number]['code']
 
-const STORAGE_KEY = 'locale'
 const DEFAULT_LOCALE: Locale = 'en'
+
+// Each language has its own address (/ and /sr/), so a link always opens the language it was
+// shared in. The address is the only source of the language: no stored choice, no browser guess.
+const pathFor = (code: Locale) => (code === DEFAULT_LOCALE ? '/' : `/${code}/`)
 
 const isSupported = (code: string | null | undefined): code is Locale =>
   supportedLocales.some((x) => x.code === code)
 
-const readStoredLocale = () => {
-  try {
-    return localStorage.getItem(STORAGE_KEY)
-  } catch {
-    return null
-  }
-}
-
 const detectLocale = (): Locale => {
-  const stored = readStoredLocale()
-  if (isSupported(stored)) return stored
-  const browser = navigator.language?.split('-')[0]
-  return isSupported(browser) ? browser : DEFAULT_LOCALE
+  const segment = location.pathname.split('/')[1]
+  return isSupported(segment) ? segment : DEFAULT_LOCALE
 }
 
 export const i18n = createI18n({
@@ -41,6 +34,9 @@ export const i18n = createI18n({
 const applyDocumentLocale = (code: Locale) => {
   document.documentElement.lang = code
   document.title = i18n.global.t('meta.title')
+  document
+    .querySelector('meta[name="description"]')
+    ?.setAttribute('content', i18n.global.t('meta.description'))
 }
 
 export const currentLocale = computed(() => i18n.global.locale.value as Locale)
@@ -48,11 +44,8 @@ export const currentLocale = computed(() => i18n.global.locale.value as Locale)
 export const setLocale = (code: string) => {
   const locale = isSupported(code) ? code : DEFAULT_LOCALE
   i18n.global.locale.value = locale
-  try {
-    localStorage.setItem(STORAGE_KEY, locale)
-  } catch {
-    // Storage can be unavailable (private mode); the choice then lasts for this visit only.
-  }
+  // Switch in place, without a reload; the address now points at the chosen language.
+  history.replaceState(history.state, '', pathFor(locale) + location.hash)
   applyDocumentLocale(locale)
 }
 

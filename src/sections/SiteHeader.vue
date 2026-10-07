@@ -121,9 +121,15 @@ const themeItems = computed<MenuItem[]>(() =>
   outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
+/* On narrow phones the name is hidden visually but still names the link to the top. */
 @media (max-width: 479px) {
   .name {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 }
 </style>
