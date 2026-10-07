@@ -3,9 +3,10 @@ export const site = {
   /**
    * Public address of the site, without a trailing slash (e.g. https://aleksandar.dev).
    * Link previews and search engines need absolute URLs, so the share image, canonical and
-   * language links are only written into the HTML once this is set.
+   * language links are only written into the HTML once this is set. Its path is also the base
+   * path the site is built for (vite.config.ts).
    */
-  url: '',
+  url: 'https://aleksandar381radosavljevic.github.io/presentation',
   /** Placeholder address (reserved example.com domain) until a real one is chosen; the button is hidden while this is empty. */
   contactEmail: 'kontakt@example.com',
   /** Public LinkedIn profile URL; the button is hidden while this is empty. */
