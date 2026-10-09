@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, ref, useId, watch, type Component } from 'vue'
+import { onBeforeUnmount, onMounted, ref, useId, watch, type Component } from 'vue'
 import { Menu, X } from '@lucide/vue'
 
 export interface NavItem {
@@ -50,13 +50,45 @@ watch(open, (isOpen) => {
   else document.removeEventListener('keydown', onKeydown)
 })
 onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
+
+// The links collapse into the menu when they do not fit next to the brand and the actions.
+// Measured, not a fixed breakpoint: labels differ by language and the actions vary.
+const compact = ref(false)
+const bar = ref<HTMLElement>()
+const brand = ref<HTMLElement>()
+const actions = ref<HTMLElement>()
+const measure = ref<HTMLElement>()
+
+const fit = () => {
+  if (!bar.value || !brand.value || !actions.value || !measure.value) return
+  const style = getComputedStyle(bar.value)
+  const gap = parseFloat(style.columnGap) || 0
+  const inner =
+    bar.value.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
+  const needed =
+    brand.value.offsetWidth + measure.value.offsetWidth + actions.value.offsetWidth + 2 * gap
+  compact.value = needed > inner
+}
+watch(compact, (isCompact) => {
+  if (!isCompact) open.value = false
+})
+
+let observer: ResizeObserver | undefined
+onMounted(() => {
+  fit()
+  observer = new ResizeObserver(fit)
+  for (const el of [bar.value, brand.value, actions.value, measure.value]) {
+    if (el) observer.observe(el)
+  }
+})
+onBeforeUnmount(() => observer?.disconnect())
 </script>
 
 <template>
-  <!-- Main header. Below 768px of header width, items move into a menu panel (disclosure). -->
-  <header :class="[$style.root, sticky && $style.sticky]">
-    <div :class="$style.bar">
-      <div :class="$style.brand"><slot name="brand" /></div>
+  <!-- Main header. When the items do not fit in one row, they move into a menu panel (disclosure). -->
+  <header :class="[$style.root, sticky && $style.sticky, compact && $style.compact]">
+    <div ref="bar" :class="$style.bar">
+      <div ref="brand" :class="$style.brand"><slot name="brand" /></div>
       <nav :aria-label="label" :class="$style.desktopNav">
         <ul :class="$style.list">
           <li v-for="it in items" :key="it.id">
@@ -71,8 +103,19 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
           </li>
         </ul>
       </nav>
+      <!-- Invisible copy of the links at their natural width, used only to measure whether they fit. -->
+      <div :class="$style.measureBox" aria-hidden="true">
+        <ul ref="measure" :class="[$style.list, $style.measure]">
+          <li v-for="it in items" :key="it.id">
+            <span :class="$style.link">
+              <component :is="it.icon" v-if="it.icon" :size="16" />
+              <span>{{ it.label }}</span>
+            </span>
+          </li>
+        </ul>
+      </div>
       <div :class="$style.end">
-        <slot name="actions" />
+        <div ref="actions" :class="$style.actions"><slot name="actions" /></div>
         <button
           ref="toggle"
           type="button"
@@ -112,7 +155,6 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
 
 <style module>
 .root {
-  container-type: inline-size;
   z-index: var(--z-sticky);
   background: var(--surface-raised);
   border-bottom: 1px solid var(--line);
@@ -123,6 +165,7 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
   top: 0;
 }
 .bar {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--space-6);
@@ -207,12 +250,27 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
 .link.current::after {
   background: var(--accent);
 }
+.measureBox {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+.measure {
+  width: max-content;
+}
 .end {
   display: flex;
   flex: none;
   align-items: center;
   gap: var(--space-2);
   margin-left: auto;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 .toggle {
   display: none;
@@ -271,17 +329,14 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
   background: var(--accent-soft);
 }
 
-/* Breakpoint md (768) by header width: below it, items go into a panel. */
-@container (max-width: 767px) {
-  .desktopNav {
-    display: none;
-  }
-  .toggle {
-    display: grid;
-  }
-  .panelOpen {
-    display: block;
-    border-top: 1px solid var(--line);
-  }
+.compact .desktopNav {
+  display: none;
+}
+.compact .toggle {
+  display: grid;
+}
+.compact .panelOpen {
+  display: block;
+  border-top: 1px solid var(--line);
 }
 </style>
