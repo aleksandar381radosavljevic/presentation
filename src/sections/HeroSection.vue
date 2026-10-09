@@ -118,12 +118,13 @@ const { t } = useI18n()
   gap: var(--space-3);
   margin-top: var(--space-4);
 }
-/* Smaller on phones, so the portrait does not take a whole screen before the work. */
+/* Smaller on phones, so the portrait does not take a whole screen before the work.
+   Aligned left with the text, so the page keeps one edge. */
 .visual {
   position: relative;
   width: min(100%, 280px);
   margin-bottom: var(--space-6);
-  justify-self: center;
+  justify-self: start;
 }
 .photo {
   display: block;
@@ -140,7 +141,7 @@ const { t } = useI18n()
   position: absolute;
   /* Hangs below the photo, so it never covers the face. */
   bottom: calc(-1 * var(--space-6));
-  left: calc(-1 * var(--space-4));
+  left: var(--space-4);
   display: flex;
   gap: var(--space-6);
   margin: 0;
@@ -191,10 +192,11 @@ const { t } = useI18n()
   color: var(--ink-muted);
 }
 
-@media (min-width: 1024px) {
+/* From tablet width the portrait sits beside the text, as on desktop, only smaller. */
+@media (min-width: 768px) {
   .inner {
-    grid-template-columns: 1fr 1.1fr;
-    gap: var(--space-16);
+    grid-template-columns: 1fr auto;
+    gap: var(--space-8);
   }
   .backdrop::after {
     background:
@@ -207,8 +209,27 @@ const { t } = useI18n()
       );
   }
   .visual {
-    width: min(100%, 400px);
+    width: 260px;
     justify-self: end;
+  }
+  .card {
+    left: calc(-1 * var(--space-8));
+  }
+  /* Four facts share the row; a smaller value keeps "Since 2022" on one line. */
+  .factValue {
+    font-size: 28px;
+  }
+}
+@media (min-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr 1.1fr;
+    gap: var(--space-16);
+  }
+  .visual {
+    width: min(100%, 400px);
+  }
+  .factValue {
+    font-size: 34px;
   }
   .card {
     left: calc(-1 * var(--space-16));
