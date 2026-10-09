@@ -6,9 +6,10 @@ import { site } from '../src/config/site.ts'
 /**
  * One HTML page per language: / in English and /sr/ in Serbian. Each page carries its own
  * lang, title, description and Open Graph tags, because link previews (LinkedIn, Slack) read
- * only the HTML and never run the app. The content itself is still rendered by the app.
+ * only the HTML and never run the app. The content is rendered into these pages afterwards by
+ * scripts/prerender.ts.
  */
-const PAGES = [
+export const PAGES = [
   { locale: 'en', path: '/', messages: en, ogLocale: 'en_US', image: '/og-en.jpg' },
   { locale: 'sr', path: '/sr/', messages: sr, ogLocale: 'sr_RS', image: '/og-sr.jpg' }
 ] as const
@@ -53,6 +54,8 @@ const render = (html: string, page: Page) =>
 
 export function localePages(): Plugin {
   let template = ''
+  // The server build (src/entry-server.ts) has no index.html; the pages come from the client build.
+  let ssr = false
   return {
     name: 'locale-pages',
     // After Vite's own HTML plugin, so the template already has the hashed asset links.
@@ -64,12 +67,16 @@ export function localePages(): Plugin {
         return render(html, PAGES[0])
       }
     },
+    configResolved(config) {
+      ssr = !!config.build.ssr
+    },
     buildStart() {
-      if (!site.url) {
+      if (!ssr && !site.url) {
         this.warn('site.url is empty: the share image, canonical and hreflang links are left out.')
       }
     },
     generateBundle() {
+      if (ssr) return
       if (!template) this.error('index.html was not transformed before the bundle was written.')
       // The other languages are copies of the finished English page, so they load the same
       // hashed assets; asset URLs are absolute, so they resolve from /sr/ as well.

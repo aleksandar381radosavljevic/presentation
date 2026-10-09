@@ -1,4 +1,4 @@
-import { readonly, ref } from 'vue'
+import { onMounted, readonly, ref } from 'vue'
 import { applyTheme, type ThemeMode } from '../utils/theme'
 
 const STORAGE_KEY = 'theme'
@@ -13,15 +13,21 @@ const readStored = (): ThemeMode => {
   }
 }
 
-const mode = ref<ThemeMode>(readStored())
+const mode = ref<ThemeMode>('system')
 let stop: (() => void) | undefined
 
 /**
  * App-wide theme mode shared by every caller: 'system' by default, the user's choice is remembered.
  * index.html sets the same theme before first paint, so there is no flash on load.
+ * Call it from a component's setup: the stored choice is read once the component is mounted,
+ * because the prerendered HTML is built without storage and hydration has to match it.
  */
 export function useTheme() {
-  if (!stop) stop = applyTheme(mode.value)
+  onMounted(() => {
+    if (stop) return
+    mode.value = readStored()
+    stop = applyTheme(mode.value)
+  })
 
   const setTheme = (next: ThemeMode) => {
     stop?.()

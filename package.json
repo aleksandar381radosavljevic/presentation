@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
-    "build-only": "vite build",
+    "build-only": "vite build && vite build --ssr src/entry-server.ts --outDir dist-ssr && node scripts/prerender.ts",
     "type-check": "vue-tsc --build --force",
     "tokens": "node scripts/build-tokens.ts && prettier --write src/shared/ui/styles/tokens.css",
     "lint": "eslint . --fix",

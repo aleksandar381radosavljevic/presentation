@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { ChevronDown } from '@lucide/vue'
 import { Badge, Card, Icon } from '@/shared/ui'
@@ -28,12 +28,17 @@ const MORE = [
 // Built on his own time, shown apart from the work done for clients.
 const PERSONAL = [{ key: 'pushInstructions', stack: ['.NET', 'React', 'PWA', 'Web Push'] }] as const
 // On phones the case-study text and the compact list entries are a tap away, so the page stays
-// shorter; from 768px everything is shown.
-const wideQuery = matchMedia('(min-width: 768px)')
-const wide = ref(wideQuery.matches)
-const onWideChange = (e: MediaQueryListEvent) => (wide.value = e.matches)
-wideQuery.addEventListener('change', onWideChange)
-onBeforeUnmount(() => wideQuery.removeEventListener('change', onWideChange))
+// shorter; from 768px everything is shown. The prerendered HTML has no screen width, so it shows
+// everything (as do search engines) and phones fold the entries once the app is mounted.
+const wide = ref(true)
+let wideQuery: MediaQueryList | undefined
+const onWideChange = (e: MediaQueryListEvent | MediaQueryList) => (wide.value = e.matches)
+onMounted(() => {
+  wideQuery = matchMedia('(min-width: 768px)')
+  onWideChange(wideQuery)
+  wideQuery.addEventListener('change', onWideChange)
+})
+onBeforeUnmount(() => wideQuery?.removeEventListener('change', onWideChange))
 
 const LISTS = [
   { title: 'projects.moreTitle', items: MORE },
