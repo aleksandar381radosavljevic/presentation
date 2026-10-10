@@ -1,11 +1,21 @@
 export default {
   meta: {
-    title: 'Aleksandar Radosavljević',
-    // Shown when the link is shared (LinkedIn, Slack) and in search results.
+    // Search results and the browser tab: name first, then what I do, within ~60 characters.
+    title: 'Aleksandar Radosavljević – Frontend Engineer, Industrial UIs',
+    // Shown when the link is shared (LinkedIn, Slack).
     shareTitle: 'Aleksandar Radosavljević, frontend engineer for real-time industrial interfaces',
+    // Up to ~150 characters, so search results show it whole.
     description:
-      'Frontend engineer and team lead in Niš, Serbia. I build real-time interfaces for industrial systems: energy grid monitoring, IoT dashboards and operator screens.',
-    imageAlt: 'Aleksandar Radosavljević, frontend engineer for real-time industrial interfaces'
+      'Frontend engineer and team lead in Niš, Serbia. I build real-time interfaces for industrial systems: energy grid monitoring and IoT dashboards.',
+    imageAlt: 'Aleksandar Radosavljević, frontend engineer for real-time industrial interfaces',
+    // Structured data for search engines (scripts/locale-pages.ts); not shown on the page.
+    locality: 'Niš',
+    school: 'Faculty of Electronic Engineering, University of Niš'
+  },
+  notFound: {
+    title: 'Page not found',
+    text: 'This address does not exist. It may have been mistyped, or the page has moved.',
+    home: 'Go to the home page'
   },
   nav: {
     about: 'About',

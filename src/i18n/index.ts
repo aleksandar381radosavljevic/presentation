@@ -16,7 +16,7 @@ const DEFAULT_LOCALE: Locale = 'en'
 // shared in. The address is the only source of the language: no stored choice, no browser guess.
 // The site can live under a subpath (GitHub Pages: /presentation/); BASE_URL always ends with '/'.
 const BASE = import.meta.env.BASE_URL
-const pathFor = (code: Locale) => (code === DEFAULT_LOCALE ? BASE : `${BASE}${code}/`)
+export const pathFor = (code: Locale) => (code === DEFAULT_LOCALE ? BASE : `${BASE}${code}/`)
 
 const isSupported = (code: string | null | undefined): code is Locale =>
   supportedLocales.some((x) => x.code === code)

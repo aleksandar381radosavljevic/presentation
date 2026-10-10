@@ -3,9 +3,19 @@ import { useI18n } from 'vue-i18n'
 import { Button, MainContainer } from '@/shared/ui'
 import en from '@/i18n/locales/en'
 import profileUrl from '@/assets/images/profile.jpg'
+import webp400 from '@/assets/images/profile-400.webp'
+import webp600 from '@/assets/images/profile-600.webp'
+import webp800 from '@/assets/images/profile-800.webp'
 import GridBackdrop from './GridBackdrop.vue'
 
 const { t } = useI18n()
+
+// The portrait is the largest element on first paint, so it loads first, as WebP in the size the
+// screen needs (14 to 37 kB, against 61 kB for the JPEG). AVIF came out larger at a
+// quality that keeps the skin texture. Widths follow .visual below: 280px phone, 260px tablet,
+// 400px desktop.
+const sizes = '(min-width: 1024px) 400px, (min-width: 768px) 260px, 280px'
+const webpSet = `${webp400} 400w, ${webp600} 600w, ${webp800} 800w`
 </script>
 
 <template>
@@ -27,13 +37,17 @@ const { t } = useI18n()
           </div>
         </div>
         <div :class="$style.visual">
-          <img
-            :class="$style.photo"
-            :src="profileUrl"
-            :alt="t('heading.photoAlt')"
-            width="800"
-            height="880"
-          />
+          <picture>
+            <source type="image/webp" :srcset="webpSet" :sizes="sizes" />
+            <img
+              :class="$style.photo"
+              :src="profileUrl"
+              :alt="t('heading.photoAlt')"
+              width="800"
+              height="880"
+              fetchpriority="high"
+            />
+          </picture>
           <dl :class="$style.card">
             <div>
               <dt>{{ t('heading.card.locationLabel') }}</dt>
