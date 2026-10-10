@@ -11,7 +11,7 @@ import {
   type MenuItem,
   type ThemeMode
 } from '@/shared/ui'
-import { currentLocale, setLocale, supportedLocales } from '@/i18n'
+import { currentLocale, pathFor, setLocale, supportedLocales, type Locale } from '@/i18n'
 import { useActiveSection } from './useActiveSection'
 
 const SECTIONS = ['about', 'services', 'projects', 'process', 'engagement', 'experience'] as const
@@ -23,6 +23,14 @@ const activeSection = useActiveSection([...SECTIONS])
 const navItems = computed(() =>
   SECTIONS.map((id) => ({ id, label: t(`nav.${id}`), href: `#${id}` }))
 )
+
+// Real links, so crawlers find the other language and it opens in a new tab; a plain click
+// switches in place without a reload.
+const onLanguageClick = (event: MouseEvent, code: Locale) => {
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+  event.preventDefault()
+  setLocale(code)
+}
 
 const THEME_ICONS = { light: Sun, dark: Moon, system: Monitor }
 const themeItems = computed<MenuItem[]>(() =>
@@ -52,20 +60,21 @@ const themeItems = computed<MenuItem[]>(() =>
       </a>
     </template>
     <template #actions>
-      <!-- Two languages fit a compact toggle; each button names its language in full for screen readers. -->
-      <div :class="$style.language" role="group" :aria-label="t('ui.language')">
-        <button
+      <!-- Two languages fit a compact toggle; each link names its language in full for screen readers. -->
+      <nav :class="$style.language" :aria-label="t('ui.language')">
+        <a
           v-for="locale in supportedLocales"
           :key="locale.code"
-          type="button"
+          :href="pathFor(locale.code)"
+          :hreflang="locale.code"
           :lang="locale.code"
-          :aria-label="locale.label"
-          :aria-pressed="currentLocale === locale.code"
-          @click="setLocale(locale.code)"
+          :aria-current="currentLocale === locale.code ? 'page' : undefined"
+          @click="onLanguageClick($event, locale.code)"
         >
-          {{ locale.short }}
-        </button>
-      </div>
+          <span aria-hidden="true">{{ locale.short }}</span>
+          <span :class="$style.srOnly">{{ locale.label }}</span>
+        </a>
+      </nav>
       <DropdownMenu :items="themeItems" :label="t('ui.theme')" placement="bottom-end">
         <template #trigger="{ triggerProps }">
           <Icon v-bind="triggerProps" :icon="THEME_ICONS[mode]" :size="20" :label="t('ui.theme')" />
@@ -99,7 +108,10 @@ const themeItems = computed<MenuItem[]>(() =>
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
 }
-.language button {
+.language a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 36px;
   height: 28px;
   padding: 0 var(--space-2);
@@ -108,18 +120,26 @@ const themeItems = computed<MenuItem[]>(() =>
   background: transparent;
   border: 0;
   border-radius: var(--radius-sm);
-  cursor: pointer;
+  text-decoration: none;
 }
-.language button:hover {
+.language a:hover {
   color: var(--ink);
 }
-.language button[aria-pressed='true'] {
+.language a[aria-current='page'] {
   color: var(--ink);
   background: var(--surface-sunken);
 }
-.language button:focus-visible {
+.language a:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 /* On narrow phones the name is hidden visually but still names the link to the top. */
 @media (max-width: 479px) {
