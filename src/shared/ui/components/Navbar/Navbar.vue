@@ -197,6 +197,9 @@ onBeforeUnmount(() => observer?.disconnect())
   flex: 1;
   min-width: 0;
   align-self: stretch;
+  /* Until the links are measured (prerendered HTML before the app loads), links that do not fit
+     are cut off instead of running under the actions; the active underline below still shows. */
+  overflow-x: clip;
 }
 .list {
   display: flex;

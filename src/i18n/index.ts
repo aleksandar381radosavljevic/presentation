@@ -22,6 +22,8 @@ const isSupported = (code: string | null | undefined): code is Locale =>
   supportedLocales.some((x) => x.code === code)
 
 const detectLocale = (): Locale => {
+  // Prerendering sets the locale of each page itself (src/entry-server.ts).
+  if (typeof location === 'undefined') return DEFAULT_LOCALE
   const rest = location.pathname.startsWith(BASE) ? location.pathname.slice(BASE.length) : ''
   const segment = rest.split('/')[0]
   return isSupported(segment) ? segment : DEFAULT_LOCALE
@@ -52,4 +54,4 @@ export const setLocale = (code: string) => {
   applyDocumentLocale(locale)
 }
 
-applyDocumentLocale(currentLocale.value)
+if (typeof document !== 'undefined') applyDocumentLocale(currentLocale.value)
